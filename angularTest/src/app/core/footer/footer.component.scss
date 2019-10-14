@@ -1,4 +1,14 @@
 .footer {
   width: 100%;
-  text-align: center;
+  background: #414452;
+  min-height: 64px;
+  text-align: right;
+  display: inline-block;
+
+  p {
+    color: #fff;
+    font-family: SourceSansPro;
+    font-size: 14px;
+    line-height: 1.71;
+  }
 }
