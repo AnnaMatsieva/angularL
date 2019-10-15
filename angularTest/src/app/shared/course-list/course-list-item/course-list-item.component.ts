@@ -9,7 +9,6 @@ import { CourseListItem } from '../course-list-item.interface';
 
 export class CourseListItemComponent implements OnInit {
   @Input() public item: CourseListItem;
-
   constructor() { }
 
   ngOnInit() {

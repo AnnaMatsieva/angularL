@@ -2,10 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { CoreModule } from '../core/core.module';
-import { CourseListModule } from '../course-list/course-list.module';
-import { BreadcrumbsComponent } from '../breadcrumbs/breadcrumbs.component';
-import { SearchComponent } from '../search/search.component';
-import { LoadMoreComponent } from '../load-more/load-more.component';
+import { CourseListModule } from '../shared/course-list/course-list.module';
+import { BreadcrumbsComponent } from '../shared/breadcrumbs/breadcrumbs.component';
+import { SearchComponent } from '../shared/search/search.component';
+import { LoadMoreComponent } from '../shared/load-more/load-more.component';
 import { CoursePageComponent } from './course-page.component';
 
 @NgModule({

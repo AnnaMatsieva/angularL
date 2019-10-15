@@ -1,4 +1,4 @@
-export interface Users {
+export interface UsersListItem {
   id: string;
   firstName: string;
   lastName: string;
