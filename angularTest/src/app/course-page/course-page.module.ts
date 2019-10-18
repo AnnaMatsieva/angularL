@@ -12,8 +12,7 @@ import { CoursePageComponent } from './course-page.component';
   declarations: [
     BreadcrumbsComponent,
     SearchComponent,
-    LoadMoreComponent,
-    CoursePageComponent
+    LoadMoreComponent
   ],
   imports: [
     BrowserModule,
