@@ -1,0 +1,12 @@
+<div class="container">
+  <form class="search" ng-controller="SearchController">
+    <input
+      (keyup)="onKeyUp($event)"
+      type="search"
+      name=""
+      aria-label="Text to search"
+      placeholder="Text to search"
+    />
+    <button click="onClick()">Search</button>
+  </form>
+</div>
