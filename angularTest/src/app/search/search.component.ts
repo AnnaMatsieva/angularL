@@ -5,8 +5,12 @@ import { Component, OnInit } from '@angular/core'
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent {
-  onKeyUp(event: any): void {
-    console.log(event.target.value)
+export class SearchComponent implements OnInit {
+  construcor() {}
+
+  ngOnInit() {}
+
+  search(): void {
+    console.log('onSearchClick')
   }
 }

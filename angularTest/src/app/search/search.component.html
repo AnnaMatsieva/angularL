@@ -1,12 +1,6 @@
-<div class="container">
-  <form class="search" ng-controller="SearchController">
-    <input
-      (keyup)="onKeyUp($event)"
-      type="search"
-      name=""
-      aria-label="Text to search"
-      placeholder="Text to search"
-    />
-    <button click="onClick()">Search</button>
-  </form>
-</div>
+<form class="search" ng-controller="SearchController">
+  <span class="search-icon">
+    <input type="search" placeholder="Text to search" />
+  </span>
+  <button type="button" (click)="search()">Search</button>
+</form>

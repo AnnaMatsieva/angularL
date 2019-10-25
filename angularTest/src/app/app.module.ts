@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 
 import { AppComponent } from './app.component'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { CoreModule } from './core/core.module'
 import { RouterModule } from '@angular/router'
 import { ROUTES } from './app.routes'
@@ -15,6 +16,7 @@ import { CourseListItemComponent } from './course-list/course-list-item/course-l
 import { HeaderComponent } from './header/header.component'
 import { FooterComponent } from './footer/footer.component'
 import { UsersComponent } from './users/users/users.component'
+import { AddCourseComponent } from './add-course/add-course.component'
 
 @NgModule({
   declarations: [
@@ -28,8 +30,9 @@ import { UsersComponent } from './users/users/users.component'
     CourseListComponent,
     CourseListItemComponent,
     UsersComponent,
+    AddCourseComponent,
   ],
-  imports: [BrowserModule, CoreModule, RouterModule.forRoot(ROUTES)],
+  imports: [BrowserModule, FontAwesomeModule, CoreModule, RouterModule.forRoot(ROUTES)],
   providers: [],
   bootstrap: [AppComponent],
 })
