@@ -6,11 +6,15 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  construcor() {}
+  constructor() {}
 
   ngOnInit() {}
 
-  search(): void {
+  OnSearchClick() {
     console.log('onSearchClick')
+  }
+
+  onSearchClick(value: string) {
+    console.log(value)
   }
 }

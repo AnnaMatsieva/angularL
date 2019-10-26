@@ -18,4 +18,12 @@ export class CourseListItemComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  onEditCourseClick() {
+    console.log('onEditCourseClick')
+  }
+
+  onDeleteCourseClick() {
+    console.log('onDeleteCourseClick')
+  }
 }

@@ -13,16 +13,13 @@ import { SearchComponent } from './search/search.component'
 import { LoadMoreComponent } from './load-more/load-more.component'
 import { CourseListComponent } from './course-list/course-list/course-list.component'
 import { CourseListItemComponent } from './course-list/course-list-item/course-list-item.component'
-import { HeaderComponent } from './header/header.component'
-import { FooterComponent } from './footer/footer.component'
 import { UsersComponent } from './users/users/users.component'
 import { AddCourseComponent } from './add-course/add-course.component'
+import { SharedModule } from './shared/shared.module'
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
     CoursePageComponent,
     BreadcrumbsComponent,
     SearchComponent,
@@ -32,7 +29,7 @@ import { AddCourseComponent } from './add-course/add-course.component'
     UsersComponent,
     AddCourseComponent,
   ],
-  imports: [BrowserModule, FontAwesomeModule, CoreModule, RouterModule.forRoot(ROUTES)],
+  imports: [BrowserModule, SharedModule, FontAwesomeModule, CoreModule, RouterModule.forRoot(ROUTES)],
   providers: [],
   bootstrap: [AppComponent],
 })

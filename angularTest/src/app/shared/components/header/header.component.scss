@@ -30,7 +30,7 @@
 .logotype {
   width: 130px;
   height: 30px;
-  background: url(../../assets/images/logo.png);
+  background: url(../../../../assets/images/logo.png);
   background-size: cover;
 }
 
@@ -45,11 +45,11 @@
 }
 
 .login::before {
-  background: url(../../assets/images/user.svg);
+  background: url(../../../../assets/images/user.svg);
   background-size: cover;
 }
 
 .logoff::before {
-  background: url(../../assets/images/exit.svg);
+  background: url(../../../../assets/images/exit.svg);
   background-size: cover;
 }

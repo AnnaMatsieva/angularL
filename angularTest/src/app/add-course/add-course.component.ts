@@ -12,4 +12,8 @@ export class AddCourseComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  onAddCourseClick() {
+    console.log('onAddCourseClick')
+  }
 }

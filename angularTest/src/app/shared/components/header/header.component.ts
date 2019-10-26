@@ -9,4 +9,12 @@ export class HeaderComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  onLoginClick() {
+    console.log('onLoginClick')
+  }
+
+  onLogoffClick() {
+    console.log('onLogoffClick')
+  }
 }

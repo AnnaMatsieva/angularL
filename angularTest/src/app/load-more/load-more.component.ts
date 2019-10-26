@@ -9,4 +9,8 @@ export class LoadMoreComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  onLoadMoreClick() {
+    console.log('onLoadMoreClick')
+  }
 }
