@@ -10,10 +10,6 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {}
 
-  OnSearchClick() {
-    console.log('onSearchClick')
-  }
-
   onSearchClick(value: string) {
     console.log(value)
   }
