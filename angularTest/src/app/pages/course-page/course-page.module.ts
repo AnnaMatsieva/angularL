@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser'
-import { NgModule } from '@angular/core'
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 
 import { CoreModule } from '../../core/core.module'
 import { CourseListModule } from '../../course-list/course-list.module'
@@ -11,6 +11,7 @@ import { CoursePageComponent } from './course-page.component'
 @NgModule({
   declarations: [BreadcrumbsComponent, SearchComponent, LoadMoreComponent],
   imports: [BrowserModule, CoreModule, CourseListModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [CoursePageComponent],
 })

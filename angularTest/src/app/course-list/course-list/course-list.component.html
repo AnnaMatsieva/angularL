@@ -1,3 +1,6 @@
+<div class="add-course">
+  <button class="button" type="button" (click)="onAddCourseClick()"><fa-icon [icon]="faPlus"></fa-icon> Add course</button>
+</div>
 <div class="course-items">
   <app-course-list-item *ngFor="let item of courseItems" [item]="item"></app-course-list-item>
 </div>

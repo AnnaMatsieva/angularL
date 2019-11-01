@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { CourseListItem } from '../course-list-item.interface'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-course-list',
@@ -7,6 +8,8 @@ import { CourseListItem } from '../course-list-item.interface'
   styleUrls: ['./course-list.component.scss'],
 })
 export class CourseListComponent implements OnInit {
+  public faPlus = faPlus
+
   public courseItems: CourseListItem[] = [
     {
       id: 1,
@@ -35,4 +38,8 @@ export class CourseListComponent implements OnInit {
   ]
 
   ngOnInit() {}
+
+  onAddCourseClick() {
+    console.log('onAddCourseClick')
+  }
 }
