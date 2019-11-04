@@ -24,4 +24,18 @@ describe('TestComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy()
   })
+
+  it('should test onEditCourseClick', () => {
+    const spy = spyOn(console, 'log')
+    component.onEditCourseClick()
+
+    expect(spy).toHaveBeenCalled()
+  })
+
+  it('should test onDeleteCourseClick', () => {
+    const spy = spyOn(console, 'log')
+    component.onDeleteCourseClick()
+
+    expect(spy).toHaveBeenCalled()
+  })
 })

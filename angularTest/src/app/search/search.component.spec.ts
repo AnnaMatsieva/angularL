@@ -24,4 +24,12 @@ describe('TestComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy()
   })
+
+  it('should test onSearchClick', () => {
+    const spy = spyOn(console, 'log')
+    component.searchValue = ''
+    component.onSearchClick()
+
+    expect(spy).toHaveBeenCalled()
+  })
 })

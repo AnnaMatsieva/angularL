@@ -24,4 +24,11 @@ describe('TestComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy()
   })
+
+  it('should test onAddCourseClick', () => {
+    const spy = spyOn(console, 'log')
+    component.onAddCourseClick()
+
+    expect(spy).toHaveBeenCalled()
+  })
 })

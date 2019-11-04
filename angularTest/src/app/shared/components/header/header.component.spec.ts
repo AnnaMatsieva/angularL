@@ -24,4 +24,18 @@ describe('TestComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy()
   })
+
+  it('should test onLoginClick', () => {
+    const spy = spyOn(console, 'log')
+    component.onLoginClick()
+
+    expect(spy).toHaveBeenCalled()
+  })
+
+  it('should test onLogoffClick', () => {
+    const spy = spyOn(console, 'log')
+    component.onLogoffClick()
+
+    expect(spy).toHaveBeenCalled()
+  })
 })
