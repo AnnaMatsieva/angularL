@@ -47,4 +47,8 @@ export class CourseListComponent implements OnInit {
   onDeleteCourseClick(id) {
     this.courseItems = this.courseItems.filter(item => item.id !== id)
   }
+
+  onSearchClick(searchValue: string) {
+    console.log(searchValue)
+  }
 }
