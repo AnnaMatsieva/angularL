@@ -17,8 +17,6 @@ import { CourseListItemComponent } from './course-list/course-list-item/course-l
 import { UsersComponent } from './users/users/users.component'
 import { SharedModule } from './shared/shared.module'
 import { BorderColorDirective } from './shared/directives/border-color.directive'
-import { CourseListItemDirective } from './shared/directives/course-list-item.directive'
-import { FilterPipe } from './shared/pipes/filter.pipe'
 
 @NgModule({
   declarations: [
@@ -31,8 +29,6 @@ import { FilterPipe } from './shared/pipes/filter.pipe'
     CourseListItemComponent,
     UsersComponent,
     BorderColorDirective,
-    CourseListItemDirective,
-    FilterPipe,
   ],
   imports: [BrowserModule, FormsModule, SharedModule, FontAwesomeModule, CoreModule, RouterModule.forRoot(ROUTES)],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

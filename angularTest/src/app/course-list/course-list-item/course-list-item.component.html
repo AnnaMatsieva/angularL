@@ -1,11 +1,11 @@
 <ng-content></ng-content>
-<div class="course-list-item" appBorderColor="course">
+<div class="course-list-item" [appBorderColor]="item" [ngClass]="{ 'top-spote': item.top }">
   <div class="course-description--block">
     <div class="course-name">
-      <h3 class="course-title">{{ item?.title | uppercase }}</h3>
+      <h3 class="course-title">{{ item?.title | uppercase }} <fa-icon *ngIf="item.top" [icon]="faStar"></fa-icon></h3>
       <div class="course-schedule">
-        <p class="course-time"><fa-icon [icon]="faClock"></fa-icon> {{ item?.time }}</p>
-        <p class="course-date"><fa-icon [icon]="faCalendarAlt"></fa-icon> {{ item?.date }}</p>
+        <p class="course-time"><fa-icon [icon]="faClock"></fa-icon> {{ item?.duration | duration }}</p>
+        <p class="course-date"><fa-icon [icon]="faCalendarAlt"></fa-icon> {{ item?.creationDate | date: 'mediumDate' }}</p>
       </div>
     </div>
     <p class="course-description">{{ item?.description }}</p>
