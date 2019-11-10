@@ -1,0 +1,55 @@
+.header {
+  width: 100%;
+  min-height: 64px;
+  background-color: #414452;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+  }
+
+  &-authorized--block {
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+
+    button {
+      position: relative;
+      font-family: SourceSansPro;
+      font-size: 14px;
+      color: #fff;
+      border: none;
+      background: none;
+      cursor: pointer;
+    }
+  }
+}
+
+.logotype {
+  width: 130px;
+  height: 30px;
+  background: url(../../../../assets/images/logo.png);
+  background-size: cover;
+}
+
+.login::before,
+.logoff::before {
+  content: '';
+  position: absolute;
+  left: -15px;
+  width: 15px;
+  height: 12px;
+  display: block;
+}
+
+.login::before {
+  background: url(../../../../assets/images/user.svg);
+  background-size: cover;
+}
+
+.logoff::before {
+  background: url(../../../../assets/images/exit.svg);
+  background-size: cover;
+}

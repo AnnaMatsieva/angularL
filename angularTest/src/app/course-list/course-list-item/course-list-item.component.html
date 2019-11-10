@@ -1,0 +1,16 @@
+<div class="course-list-item">
+  <div class="course-description--block">
+    <div class="course-name">
+      <h3 class="course-title">{{ item.title }}</h3>
+      <div class="course-schedule">
+        <p class="course-time"><fa-icon [icon]="faClock"></fa-icon> {{ item.time }}</p>
+        <p class="course-date"><fa-icon [icon]="faCalendarAlt"></fa-icon> {{ item.date }}</p>
+      </div>
+    </div>
+    <p class="course-description">{{ item.description }}</p>
+  </div>
+  <div class="edits--block">
+    <button class="button edit" (click)="onEditCourseClick()"><fa-icon [icon]="faPen"></fa-icon> Edit</button>
+    <button class="button delete" (click)="onDeleteCourseClick()"><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</button>
+  </div>
+</div>
