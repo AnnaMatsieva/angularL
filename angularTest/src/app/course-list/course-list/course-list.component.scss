@@ -11,3 +11,67 @@
     padding: 10px 20px;
   }
 }
+
+.course {
+  &-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 25px;
+    background: #fff;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: 0 1px 24px 0 rgba(18, 21, 35, 0.08);
+    border: solid 1px transparent;
+  }
+
+  &-description--block {
+    width: 80%;
+  }
+}
+
+// DELETE when I'll figure it out (SearchComponent)
+.search {
+  margin: 25px 0;
+  display: flex;
+
+  input {
+    border-radius: 3px;
+    border: solid 1px #d9dbe3;
+    background-color: #ffffff;
+    padding-left: 40px;
+    margin-right: 10px;
+    min-height: 50px;
+    width: 300px;
+  }
+
+  button {
+    border-radius: 3px;
+    font-family: SourceSansPro;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.13px;
+    color: #ffffff;
+    border: none;
+    background: #9bc837;
+    padding: 0 20px;
+    min-height: 50px;
+    cursor: pointer;
+  }
+}
+
+.search-icon {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    background: url(../../../assets/images/search.svg);
+    background-size: cover;
+    width: 21px;
+    height: 21px;
+  }
+}

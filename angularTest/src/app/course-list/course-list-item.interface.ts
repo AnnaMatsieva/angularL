@@ -1,5 +1,5 @@
 export interface CourseListItem {
-  id: number
+  id: string
   title: string
   time?: string
   date?: string

@@ -1,7 +1,8 @@
-<div class="course-list-item">
+<ng-content></ng-content>
+<div class="course-list-item" appBorderColor>
   <div class="course-description--block">
     <div class="course-name">
-      <h3 class="course-title">{{ item?.title }}</h3>
+      <h3 class="course-title">{{ item?.title | uppercase }}</h3>
       <div class="course-schedule">
         <p class="course-time"><fa-icon [icon]="faClock"></fa-icon> {{ item?.time }}</p>
         <p class="course-date"><fa-icon [icon]="faCalendarAlt"></fa-icon> {{ item?.date }}</p>
