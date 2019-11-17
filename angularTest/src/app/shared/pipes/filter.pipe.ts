@@ -1,16 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core'
+import { Observable } from 'rxjs'
+import { map } from 'rxjs/operators'
 import { CourseListItem } from 'src/app/course-list/course-list-item.interface'
 
 @Pipe({
   name: 'filter',
 })
 export class FilterPipe implements PipeTransform {
-  transform(courseItems: CourseListItem[], search: string = ''): CourseListItem[] {
-    if (!search.trim()) {
-      return courseItems
+  transform(courses$: Observable<Array<CourseListItem>>, searchValue: string): Observable<Array<CourseListItem>> {
+    if (!searchValue) {
+      return courses$
     }
-    return courseItems.filter(courseItems => {
-      return courseItems.title.toLowerCase().includes(search.toLowerCase())
-    })
+    return courses$.pipe(map(x => x.filter(i => i.title.toLowerCase().includes(searchValue.toLowerCase()))))
   }
 }

@@ -1,67 +1,52 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, OnDestroy } from '@angular/core'
+import { CoursesService } from './../../shared/services/courses.service'
 import { CourseListItem } from '../course-list-item.interface'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { Observable, Subscription } from 'rxjs'
+import { FilterPipe } from './../../shared/pipes/filter.pipe'
 
 @Component({
   selector: 'app-course-list',
   templateUrl: './course-list.component.html',
   styleUrls: ['./course-list.component.scss'],
 })
-export class CourseListComponent implements OnInit {
+export class CourseListComponent implements OnInit, OnDestroy {
+  public courses$: Observable<CourseListItem[]>
+  private sub: Subscription
+
+  public filter: string
   public faPlus = faPlus
-  public search = ''
-  public top = false
 
-  public courseItems: CourseListItem[] = [
-    {
-      id: '1',
-      title: 'Video Course 1. Name tag',
-      duration: 60,
-      creationDate: '11.10.2019',
-      description:
-        'Learn about where you can find course descriptions, what information they include, how they work, and details about various components of a course description. Course descriptions report information about a university or colleges classes. Theyre published both in course catalogs that outline degree requirements and in course schedules that contain descriptions for all courses offered during a particular semester.',
-      top: true,
-    },
-    {
-      id: '2',
-      title: 'Video Course 2. Name tag',
-      duration: 120,
-      creationDate: '12.20.2019',
-      description:
-        'Learn about where you can find course descriptions, what information they include, how they work, and details about various components of a course description. Course descriptions report information about a university or colleges classes. Theyre published both in course catalogs that outline degree requirements and in course schedules that contain descriptions for all courses offered during a particular semester.',
-      top: true,
-    },
-    {
-      id: '3',
-      title: 'Item 3',
-      duration: 30,
-      creationDate: '10.02.2019',
-      description:
-        'Learn about where you can find course descriptions, what information they include, how they work, and details about various components of a course description. Course descriptions report information about a university or colleges classes. Theyre published both in course catalogs that outline degree requirements and in course schedules that contain descriptions for all courses offered during a particular semester.',
-      top: false,
-    },
-    {
-      id: '4',
-      title: 'Item 4',
-      duration: 245,
-      creationDate: '12.20.2019',
-      description:
-        'Learn about where you can find course descriptions, what information they include, how they work, and details about various components of a course description. Course descriptions report information about a university or colleges classes. Theyre published both in course catalogs that outline degree requirements and in course schedules that contain descriptions for all courses offered during a particular semester.',
-      top: false,
-    },
-  ]
+  constructor(private coursesService: CoursesService, private filterPipe: FilterPipe) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.courses$ = this.getFilterCourses(this.coursesService.getCourses(), this.filter)
+
+    this.sub = this.coursesService.getFilterText().subscribe(filter => {
+      this.filter = filter
+      this.courses$ = this.getFilterCourses(this.coursesService.getCourses(), this.filter)
+    })
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe()
+  }
+
+  getFilterCourses(courses$: Observable<Array<CourseListItem>>, searchText: string): Observable<Array<CourseListItem>> {
+    return this.filterPipe.transform(courses$, searchText)
+  }
 
   onAddCourseClick() {
+    this.coursesService.addCourse()
     console.log('onAddCourseClick')
   }
 
-  onDeleteCourseClick(id) {
-    this.courseItems = this.courseItems.filter(item => item.id !== id)
+  onDeleteCourseClick(item: CourseListItem) {
+    console.log('delete ${item.id')
+    this.coursesService.removeItem(item)
   }
 
-  onSearchClick(searchValue: string) {
-    console.log(searchValue)
+  onEditCourseClick(item: CourseListItem) {
+    console.log('edit ${item.id')
   }
 }

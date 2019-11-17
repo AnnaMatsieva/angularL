@@ -1,24 +1,15 @@
-<!-- TODO: issue with searchComponent. -->
-<form class="search" name="formSearch">
-  <span class="search-icon">
-    <input name="search" type="text" placeholder="Text to search" #searchValueId id="searchValueId" [(ngModel)]="search" />
-  </span>
-  <button type="button" (click)="onSearchClick(searchValueId.value)">Search</button>
-</form>
-<!--  -->
-
 <div class="add-course">
   <button class="button" type="button" (click)="onAddCourseClick()"><fa-icon [icon]="faPlus"></fa-icon> Add course</button>
 </div>
 
 <div class="course-items">
   <app-course-list-item
-    *ngFor="let item of courseItems | filter: search"
+    *ngFor="let item of courses$ | async | filter: search"
     [item]="item"
-    (Remove)="onDeleteCourseClick($event)"
+    (removeItem)="onDeleteCourseClick($event)"
   ></app-course-list-item>
   <div #data>
-    <div *ngIf="courseItems.length; else nodata"></div>
+    <div *ngIf="courses$ | async; else nodata"></div>
     <ng-template #nodata>
       <div class="course-list-item">
         <div class="course-description--block">

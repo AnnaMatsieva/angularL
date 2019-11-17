@@ -17,6 +17,7 @@ import { CourseListItemComponent } from './course-list/course-list-item/course-l
 import { UsersComponent } from './users/users/users.component'
 import { SharedModule } from './shared/shared.module'
 import { BorderColorDirective } from './shared/directives/border-color.directive'
+import { ModalDialogComponent } from './modal-dialog/modal-dialog.component'
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { BorderColorDirective } from './shared/directives/border-color.directive
     CourseListItemComponent,
     UsersComponent,
     BorderColorDirective,
+    ModalDialogComponent,
   ],
   imports: [BrowserModule, FormsModule, SharedModule, FontAwesomeModule, CoreModule, RouterModule.forRoot(ROUTES)],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
