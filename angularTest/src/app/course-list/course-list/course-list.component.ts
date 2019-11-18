@@ -42,11 +42,11 @@ export class CourseListComponent implements OnInit, OnDestroy {
   }
 
   onDeleteCourseClick(item: CourseListItem) {
-    console.log('delete ${item.id')
+    console.log('delete')
     this.coursesService.removeItem(item)
   }
 
   onEditCourseClick(item: CourseListItem) {
-    console.log('edit ${item.id')
+    console.log('edit')
   }
 }

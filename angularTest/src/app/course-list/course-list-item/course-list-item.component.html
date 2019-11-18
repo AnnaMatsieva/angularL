@@ -13,11 +13,10 @@
   <div class="edits--block">
     <button class="button edit" (click)="onEditCourseClick()"><fa-icon [icon]="faPen"></fa-icon> Edit</button>
     <button class="button delete" (click)="openModal('custom-modal')"><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</button>
+    <jw-modal id="custom-modal">
+      <h1>Remove????</h1>
+      <button class="button" (click)="onDeleteCourseClick()">Ok</button>
+      <button class="button" (click)="closeModal('custom-modal')">Close</button>
+    </jw-modal>
   </div>
 </div>
-
-<jw-modal id="custom-modal">
-  <h1>Remove????</h1>
-  <button class="button" (click)="onDeleteCourseClick($event)">Ok</button>
-  <button class="button" (click)="closeModal('custom-modal')">Close</button>
-</jw-modal>
