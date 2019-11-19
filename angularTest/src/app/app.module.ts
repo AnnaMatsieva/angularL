@@ -18,6 +18,7 @@ import { UsersComponent } from './users/users/users.component'
 import { SharedModule } from './shared/shared.module'
 import { BorderColorDirective } from './shared/directives/border-color.directive'
 import { ModalDialogComponent } from './modal-dialog/modal-dialog.component'
+import { LoginComponent } from './login/login.component'
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ModalDialogComponent } from './modal-dialog/modal-dialog.component'
     UsersComponent,
     BorderColorDirective,
     ModalDialogComponent,
+    LoginComponent,
   ],
   imports: [BrowserModule, FormsModule, SharedModule, FontAwesomeModule, CoreModule, RouterModule.forRoot(ROUTES)],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

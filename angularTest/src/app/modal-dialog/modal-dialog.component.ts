@@ -38,7 +38,7 @@ export class ModalDialogComponent implements OnInit, OnDestroy {
 
   // remove self from modal service when component is destroyed
   ngOnDestroy(): void {
-    // this.modalService.remove(this.id)
+    this.modalService.remove(this.id)
     this.element.remove()
   }
 

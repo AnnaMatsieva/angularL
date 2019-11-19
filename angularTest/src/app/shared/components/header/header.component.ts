@@ -11,7 +11,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {}
 
   onLoginClick() {
-    console.log('onLoginClick')
+    const el = document.getElementsByClassName('login') as HTMLCollectionOf<HTMLElement>
+    if (true) {
+      for (var i = 0; i < el.length; i++) {
+        el[i].style.display = 'block'
+      }
+      console.log('onLoginClick')
+    }
   }
 
   onLogoffClick() {
