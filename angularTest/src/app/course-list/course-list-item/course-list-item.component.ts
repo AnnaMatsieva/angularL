@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core'
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
 import { CourseListItem } from '../course-list-item.interface'
-import { faClock, faCalendarAlt, faPen, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faClock, faCalendarAlt, faPen, faTrashAlt, faStar } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-course-list-item',
@@ -8,22 +8,27 @@ import { faClock, faCalendarAlt, faPen, faTrashAlt } from '@fortawesome/free-sol
   styleUrls: ['./course-list-item.component.scss'],
 })
 export class CourseListItemComponent implements OnInit {
-  @Input() public item: CourseListItem
+  @Input() item: CourseListItem
+  @Output() Remove = new EventEmitter()
 
   public faClock = faClock
   public faCalendarAlt = faCalendarAlt
   public faPen = faPen
   public faTrashAlt = faTrashAlt
+  public faStar = faStar
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    // console.log(this.infoRef.nativeElement)
+  }
 
   onEditCourseClick() {
     console.log('onEditCourseClick')
   }
 
   onDeleteCourseClick() {
+    this.Remove.emit(this.item.id)
     console.log('onDeleteCourseClick')
   }
 }
