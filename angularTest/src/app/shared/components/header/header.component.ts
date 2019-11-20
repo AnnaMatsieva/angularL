@@ -12,6 +12,8 @@ export class HeaderComponent implements OnInit {
 
   onLoginClick() {
     const el = document.getElementsByClassName('login') as HTMLCollectionOf<HTMLElement>
+    // const val = document.getElementsByClassName('body') as HTMLCollectionOf<HTMLElement>
+
     if (true) {
       for (var i = 0; i < el.length; i++) {
         el[i].style.display = 'block'

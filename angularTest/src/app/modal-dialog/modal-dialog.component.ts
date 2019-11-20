@@ -17,7 +17,7 @@ export class ModalDialogComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // ensure id attribute exists
-    if (!this.id) {
+    if (!this.element) {
       console.error('modal must have an id')
       return
     }
@@ -38,8 +38,8 @@ export class ModalDialogComponent implements OnInit, OnDestroy {
 
   // remove self from modal service when component is destroyed
   ngOnDestroy(): void {
-    this.modalService.remove(this.id)
-    this.element.remove()
+    this.element.remove(this.id)
+    this.close()
   }
 
   // open modal

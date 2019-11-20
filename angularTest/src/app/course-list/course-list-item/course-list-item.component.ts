@@ -21,8 +21,6 @@ export class CourseListItemComponent implements OnInit {
   public faTrashAlt = faTrashAlt
   public faStar = faStar
 
-  bodyText: string
-
   constructor(private modalDialogService: ModalDialogService) {}
 
   onEditCourseClick() {
@@ -35,9 +33,7 @@ export class CourseListItemComponent implements OnInit {
     console.log('onDeleteCourseClick')
   }
 
-  ngOnInit() {
-    this.bodyText = 'This text can be updated in modal 1'
-  }
+  ngOnInit() {}
 
   openModal(id: string) {
     this.modalDialogService.open(id)

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { UsersListItem } from '../users.interface'
+import { Users } from '../users.interface'
 
 @Component({
   selector: 'app-users',
@@ -7,7 +7,7 @@ import { UsersListItem } from '../users.interface'
   styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
-  public userItems: UsersListItem[] = []
+  public userItems: Users[] = []
 
   constructor() {}
 
