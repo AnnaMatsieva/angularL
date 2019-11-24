@@ -1,4 +1,4 @@
-<app-breadcrumbs></app-breadcrumbs>
+<app-breadcrumbs *ngIf="authService.isAuthenticates"></app-breadcrumbs>
 <div class="container">
   <app-search></app-search>
   <app-course-list></app-course-list>

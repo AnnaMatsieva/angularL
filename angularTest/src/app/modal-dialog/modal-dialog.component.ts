@@ -40,6 +40,9 @@ export class ModalDialogComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.element.remove(this.id)
     this.close()
+
+    this.element.style.display = 'none'
+    document.body.classList.remove('jw-modal-open')
   }
 
   // open modal

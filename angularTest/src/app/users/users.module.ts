@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core'
-import { CommonModule } from '@angular/common'
-import { UsersComponent } from './users/users.component'
+export interface IUsers {
+  id: string | number
+  firstName: string
+  lastName: string
+}
 
-@NgModule({
-  declarations: [UsersComponent],
-  imports: [CommonModule],
-})
-export class UsersModule {}
+export class Users implements IUsers {
+  constructor(public id: string | number, public firstName: string, public lastName: string) {}
+}
