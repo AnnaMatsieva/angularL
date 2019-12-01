@@ -1,6 +1,6 @@
 export interface CourseListItem {
   creationDate: any | Date
-  id: string
+  id: string | number
   title: string
   date?: string
   description?: string

@@ -1,6 +1,6 @@
-<form class="search" name="formSearch">
+<form class="search" name="formSearch" (ngSubmit)="onSearchClick(search)">
   <span class="search-icon">
-    <input name="search" type="text" placeholder="Text to search" #searchValueId id="searchValueId" [(ngModel)]="search" />
+    <input name="search" type="text" placeholder="Text to search" #searchValueId id="searchValueId" [(ngModel)]="searchValue" />
   </span>
-  <button type="button" (click)="onSearchClick(searchValueId.value)">Search</button>
+  <button type="submit">Search</button>
 </form>

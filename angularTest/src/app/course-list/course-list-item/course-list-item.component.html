@@ -12,6 +12,18 @@
   </div>
   <div class="edits--block">
     <button class="button edit" (click)="onEditCourseClick()"><fa-icon [icon]="faPen"></fa-icon> Edit</button>
-    <button class="button delete" (click)="onDeleteCourseClick()"><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</button>
+    <button class="button delete" (click)="openModal('custom-modal')"><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</button>
+    <jw-modal id="custom-modal">
+      <div class="modal-header">
+        <p>Delete course?</p>
+      </div>
+      <div class="modal-content">
+        <p>Are you sure you want to delete {{ item?.title }}</p>
+        <div class="modal-button">
+          <button class="button btn-success" (click)="onDeleteCourseClick()">Yes, delete</button>
+          <button class="button btn-light" (click)="closeModal('custom-modal')">Cancel</button>
+        </div>
+      </div>
+    </jw-modal>
   </div>
 </div>
