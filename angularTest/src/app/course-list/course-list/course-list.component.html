@@ -1,5 +1,7 @@
 <div class="add-course">
-  <button class="button" type="button" (click)="onAddCourseClick()"><fa-icon [icon]="faPlus"></fa-icon> Add course</button>
+  <button class="button" type="button" (click)="onAddCourseClick()" routerLink="/new-course">
+    <fa-icon [icon]="faPlus"></fa-icon> Add course
+  </button>
 </div>
 
 <div class="course-items">

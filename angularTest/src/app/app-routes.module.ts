@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common'
 import { RouterModule, Routes } from '@angular/router'
 import { LoginComponent } from './login/login.component'
 import { CoursePageComponent } from './pages/course-page/course-page.component'
+import { NewCourseComponent } from './course-list/new-course/new-course.component'
 
 const routes: Routes = [
   {
@@ -17,6 +18,14 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'new-course',
+    component: NewCourseComponent,
+  },
+  {
+    path: 'edit-course/:taskID',
+    component: NewCourseComponent,
   },
 ]
 
