@@ -1,0 +1,16 @@
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 250px);
+
+  &_title {
+    font-size: 2rem;
+    color: #222;
+
+    span {
+      color: #30b6dd;
+      font-size: 3rem;
+    }
+  }
+}
