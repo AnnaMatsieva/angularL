@@ -7,14 +7,14 @@
     <label for="login-email">E-mail:</label>
     <span class="required">*required</span>
   </div>
-  <input id="login-email" type="email" placeholder="Enter e-mail" [(ngModel)]="emailValue" name="emailValue" />
+  <input id="login-email" type="email" placeholder="Enter e-mail" [(ngModel)]="emailValue" required name="emailValue" />
   <div class="two-col">
     <label for="login-pass">Password:</label>
     <span class="required">*required</span>
   </div>
-  <input id="login-pass" type="password" placeholder="Enter password" [(ngModel)]="passwordValue" name="passwordValue" />
+  <input id="login-pass" type="password" placeholder="Enter password" [(ngModel)]="passwordValue" required name="passwordValue" />
   <div class="two-col login-action">
     <a class="login-forgot" href="">Forgot a password?</a>
-    <button type="submit" class="button btn-light">Login</button>
+    <button type="submit" class="button btn-light" [disabled]="!loginForm.valid">Login</button>
   </div>
 </form>

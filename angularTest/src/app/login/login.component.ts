@@ -14,11 +14,22 @@ export class LoginComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.authService.isAuthorized) {
+      this.router.navigate(['courses'])
+    }
+  }
 
   onLoginClick(loginForm: NgForm) {
-    this.authService.login()
-    this.router.navigate(['/courses'])
-    console.log('email value ' + this.emailValue)
+    this.authService.login(JSON.stringify(loginForm.value))
+
+    const redirectUrl = this.authService.redirectUrl
+
+    if (redirectUrl) {
+      this.authService.redirectUrl = null
+      this.router.navigateByUrl(redirectUrl)
+    } else {
+      this.router.navigate(['courses'])
+    }
   }
 }

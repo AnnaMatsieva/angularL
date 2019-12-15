@@ -1,5 +1,6 @@
 <ng-content></ng-content>
-<div class="course-list-item" [appBorderColor]="item" [ngClass]="{ 'top-spote': item.top }">
+<div class="course-list-item" [ngClass]="{ 'top-spote': item.top }">
+  <!-- <div class="course-list-item" [appBorderColor]="item" [ngClass]="{ 'top-spote': item.top }"> -->
   <div class="course-description--block">
     <div class="course-name">
       <h3 class="course-title">{{ item?.title | uppercase }} <fa-icon *ngIf="item.top" [icon]="faStar"></fa-icon></h3>
@@ -11,7 +12,7 @@
     <p class="course-description">{{ item?.description }}</p>
   </div>
   <div class="edits--block">
-    <button class="button edit" (click)="onEditCourseClick()"><fa-icon [icon]="faPen"></fa-icon> Edit</button>
+    <button class="button edit" (click)="onEditClick()"><fa-icon [icon]="faPen"></fa-icon> Edit</button>
     <button class="button delete" (click)="openModal('custom-modal')"><fa-icon [icon]="faTrashAlt"></fa-icon> Delete</button>
     <jw-modal id="custom-modal">
       <div class="modal-header">
@@ -20,7 +21,7 @@
       <div class="modal-content">
         <p>Are you sure you want to delete {{ item?.title }}</p>
         <div class="modal-button">
-          <button class="button btn-success" (click)="onDeleteCourseClick()">Yes, delete</button>
+          <button class="button btn-success" (click)="onDeleteClick()">Yes, delete</button>
           <button class="button btn-light" (click)="closeModal('custom-modal')">Cancel</button>
         </div>
       </div>

@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common'
 import { CourseListItemComponent } from './course-list-item/course-list-item.component'
 import { CourseListComponent } from './course-list/course-list.component'
 import { FormsModule } from '@angular/forms'
-import { NewCourseComponent } from './new-course/new-course.component'
+import { RouterModule } from '@angular/router'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { SharedModule } from '../shared/shared.module'
 
 @NgModule({
-  declarations: [FormsModule, CourseListItemComponent, CourseListComponent, NewCourseComponent],
+  declarations: [CourseListItemComponent, CourseListComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule, FormsModule, FontAwesomeModule, SharedModule],
   exports: [CourseListComponent],
 })
 export class CourseListModule {}

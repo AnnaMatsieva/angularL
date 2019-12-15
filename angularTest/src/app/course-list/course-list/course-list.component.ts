@@ -4,6 +4,7 @@ import { CourseListItem } from '../course-list-item.interface'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { Observable, Subscription } from 'rxjs'
 import { FilterPipe } from './../../shared/pipes/filter.pipe'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-course-list',
@@ -17,7 +18,7 @@ export class CourseListComponent implements OnInit, OnDestroy {
   public filter: string
   public faPlus = faPlus
 
-  constructor(private coursesService: CoursesService, private filterPipe: FilterPipe) {}
+  constructor(private coursesService: CoursesService, private filterPipe: FilterPipe, private router: Router) {}
 
   ngOnInit() {
     this.courses$ = this.getFilterCourses(this.coursesService.getCourses(), this.filter)
@@ -37,16 +38,14 @@ export class CourseListComponent implements OnInit, OnDestroy {
   }
 
   onAddCourseClick() {
-    this.coursesService.addCourse()
-    console.log('onAddCourseClick')
+    this.router.navigate(['courses/new'])
   }
 
   onDeleteCourseClick(item: CourseListItem) {
-    console.log('delete')
     this.coursesService.removeItem(item)
   }
 
   onEditCourseClick(item: CourseListItem) {
-    console.log('edit')
+    this.router.navigate(['item', item.id])
   }
 }

@@ -31,7 +31,7 @@
   <input id="author" type="text" placeholder="Start typing" name="author" />
 
   <div class="submit">
-    <button type="submit" class="button btn-light" (click)="onCancelClick()">Cancel</button>
-    <button type="submit" class="button btn-submit" (click)="onSaveClick()">Save</button>
+    <button type="submit" class="button btn-light" (click)="onCancelClick()" routerLink="/courses">Cancel</button>
+    <button type="submit" class="button btn-submit" (click)="onSaveClick()" routerLink="/courses/new-course">Save</button>
   </div>
 </form>

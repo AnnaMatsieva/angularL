@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { FilterPipe } from 'src/app/shared/pipes/filter.pipe'
 import { AuthService } from 'src/app/shared/services/auth.service'
 
@@ -8,8 +8,10 @@ import { AuthService } from 'src/app/shared/services/auth.service'
   styleUrls: ['./course-page.component.scss'],
   providers: [FilterPipe],
 })
-export class CoursePageComponent implements OnInit {
+export class CoursePageComponent {
   constructor(private authService: AuthService) {}
 
-  ngOnInit() {}
+  get userIsAuthorized(): boolean {
+    return this.authService.isAuthorized
+  }
 }

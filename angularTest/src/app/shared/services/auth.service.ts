@@ -1,31 +1,33 @@
 import { Injectable } from '@angular/core'
 import { Users } from 'src/app/users/users.module'
-import { Observable, of } from 'rxjs'
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  isAuthenticated = true
   private token = 'qwerty'
   private users: Users = { id: 1, firstName: 'Ann', lastName: 'Sample' }
+  redirectUrl: string
 
   constructor() {}
 
-  login() {
-    localStorage.setItem(this.token, JSON.stringify(this.getUsersInfo()))
-    this.isAuthenticated = true
+  get isAuthorized(): boolean {
+    // return !!this.getUsersInfo();
+    return !!JSON.parse(localStorage.getItem(this.token))
+  }
 
-    console.log('logged')
+  login(userLogin: string) {
+    localStorage.setItem(this.token, userLogin)
   }
 
   logout() {
     localStorage.removeItem(this.token)
-    this.users = null
-    this.isAuthenticated = false
   }
 
-  getUsersInfo(): Observable<Users> {
-    return of(this.users)
+  getUsersInfo(): Users | null {
+    if (this.isAuthorized) {
+      return this.users
+    }
+    return null
   }
 }

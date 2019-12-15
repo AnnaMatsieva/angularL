@@ -44,7 +44,14 @@
   }
 
   button {
-    color: #a8a9b4;
+    background: #9bc837;
+    color: #fff;
+
+    &[disabled] {
+      background: #d9dbe3;
+      color: #a8a9b4;
+      cursor: not-allowed;
+    }
   }
 
   &-action {

@@ -1,10 +1,10 @@
 <header class="header">
   <div class="container">
-    <a class="logotype" href="" alt="logotype"></a>
-    <div class="header-authorized--block" *ngIf="authService.isAuthenticated">
+    <a routerLink="courses" class="logotype" href="" alt="logotype"></a>
+    <div class="header-authorized--block" *ngIf="hasUserInfo">
       <button class="login" type="button" *ngIf="user">{{ user.firstName }}</button>
       <button class="login" type="button" *ngIf="!user">User login</button>
-      <button class="logoff" type="button" (click)="onLogoffClick($event)">Log off</button>
+      <button class="logoff" type="button" (click)="onLogoffClick()">Log off</button>
     </div>
   </div>
 </header>

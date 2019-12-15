@@ -23,14 +23,13 @@ export class CourseListItemComponent implements OnInit {
 
   constructor(private modalDialogService: ModalDialogService) {}
 
-  onEditCourseClick() {
-    console.log('onEditCourseClick')
+  onEditClick() {
+    console.log('fff')
     this.editItem.emit(this.item)
   }
 
-  onDeleteCourseClick() {
+  onDeleteClick() {
     this.removeItem.emit(this.item)
-    console.log('onDeleteCourseClick')
   }
 
   ngOnInit() {}

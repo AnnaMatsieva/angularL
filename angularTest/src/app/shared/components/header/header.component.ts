@@ -1,5 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core'
-import { Subscription } from 'rxjs'
+import { Component, OnInit } from '@angular/core'
 import { Users } from 'src/app/users/users.module'
 import { AuthService } from '../../services/auth.service'
 import { Router } from '@angular/router'
@@ -9,39 +8,21 @@ import { Router } from '@angular/router'
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
   public user: Users
-  private sub: Subscription
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit() {
-    this.authService.login()
-
-    this.sub = this.authService.getUsersInfo().subscribe(user => {
-      this.user = user
-    })
+  get hasUserInfo(): boolean {
+    return this.authService.isAuthorized
   }
 
-  // onLoginClick() {
-  //   const el = document.getElementsByClassName('login') as HTMLCollectionOf<HTMLElement>
-  //   // const val = document.getElementsByClassName('body') as HTMLCollectionOf<HTMLElement>
-
-  //   if (true) {
-  //     for (var i = 0; i < el.length; i++) {
-  //       el[i].style.display = 'block'
-  //     }
-  //     console.log('onLoginClick')
-  //   }
-  // }
-
-  ngOnDestroy() {
-    this.sub.unsubscribe()
+  ngOnInit() {
+    this.user = this.authService.getUsersInfo()
   }
 
   onLogoffClick() {
     this.authService.logout()
     this.router.navigate(['/login'])
-    console.log('onLogoffClick')
   }
 }
