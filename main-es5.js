@@ -28,18 +28,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<app-header></app-header>\n<main>\n  <!-- <app-login></app-login> -->\n  <!-- <app-new-course></app-new-course> -->\n  <router-outlet></router-outlet>\n</main>\n<app-footer></app-footer>\n");
-            /***/ 
-        }),
-        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/breadcrumbs/breadcrumbs.component.html": 
-        /*!**********************************************************************************************!*\
-          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/breadcrumbs/breadcrumbs.component.html ***!
-          \**********************************************************************************************/
-        /*! exports provided: default */
-        /***/ (function (module, __webpack_exports__, __webpack_require__) {
-            "use strict";
-            __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"breadcrumbs\">\n  <div class=\"container\">\n    <a href=\"\">Courses</a>\n  </div>\n</div>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<app-header></app-header>\n<main>\n  <app-breadcrumbs *ngIf=\"userIsAuthorized\"></app-breadcrumbs>\n  <!-- <app-login></app-login> -->\n  <!-- <app-new-course></app-new-course> -->\n  <router-outlet></router-outlet>\n</main>\n<app-footer></app-footer>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/course-list/course-list-item/course-list-item.component.html": 
@@ -50,7 +39,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<ng-content></ng-content>\n<div class=\"course-list-item\" [appBorderColor]=\"item\" [ngClass]=\"{ 'top-spote': item.top }\">\n  <div class=\"course-description--block\">\n    <div class=\"course-name\">\n      <h3 class=\"course-title\">{{ item?.title | uppercase }} <fa-icon *ngIf=\"item.top\" [icon]=\"faStar\"></fa-icon></h3>\n      <div class=\"course-schedule\">\n        <p class=\"course-time\"><fa-icon [icon]=\"faClock\"></fa-icon> {{ item?.duration | duration }}</p>\n        <p class=\"course-date\"><fa-icon [icon]=\"faCalendarAlt\"></fa-icon> {{ item?.creationDate | date: 'mediumDate' }}</p>\n      </div>\n    </div>\n    <p class=\"course-description\">{{ item?.description }}</p>\n  </div>\n  <div class=\"edits--block\">\n    <button class=\"button edit\" (click)=\"onEditCourseClick()\"><fa-icon [icon]=\"faPen\"></fa-icon> Edit</button>\n    <button class=\"button delete\" (click)=\"openModal('custom-modal')\"><fa-icon [icon]=\"faTrashAlt\"></fa-icon> Delete</button>\n    <jw-modal id=\"custom-modal\">\n      <div class=\"modal-header\">\n        <p>Delete course?</p>\n      </div>\n      <div class=\"modal-content\">\n        <p>Are you sure you want to delete {{ item?.title }}</p>\n        <div class=\"modal-button\">\n          <button class=\"button btn-success\" (click)=\"onDeleteCourseClick()\">Yes, delete</button>\n          <button class=\"button btn-light\" (click)=\"closeModal('custom-modal')\">Cancel</button>\n        </div>\n      </div>\n    </jw-modal>\n  </div>\n</div>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<ng-content></ng-content>\n<div class=\"course-list-item\" [ngClass]=\"{ 'top-spote': item.top }\">\n  <!-- <div class=\"course-list-item\" [appBorderColor]=\"item\" [ngClass]=\"{ 'top-spote': item.top }\"> -->\n  <div class=\"course-description--block\">\n    <div class=\"course-name\">\n      <h3 class=\"course-title\">{{ item?.title | uppercase }} <fa-icon *ngIf=\"item.top\" [icon]=\"faStar\"></fa-icon></h3>\n      <div class=\"course-schedule\">\n        <p class=\"course-time\"><fa-icon [icon]=\"faClock\"></fa-icon> {{ item?.duration | duration }}</p>\n        <p class=\"course-date\"><fa-icon [icon]=\"faCalendarAlt\"></fa-icon> {{ item?.creationDate | date: 'mediumDate' }}</p>\n      </div>\n    </div>\n    <p class=\"course-description\">{{ item?.description }}</p>\n  </div>\n  <div class=\"edits--block\">\n    <button class=\"button edit\" (click)=\"onEditClick()\"><fa-icon [icon]=\"faPen\"></fa-icon> Edit</button>\n    <button class=\"button delete\" (click)=\"openModal('custom-modal')\"><fa-icon [icon]=\"faTrashAlt\"></fa-icon> Delete</button>\n    <jw-modal id=\"custom-modal\">\n      <div class=\"modal-header\">\n        <p>Delete course?</p>\n      </div>\n      <div class=\"modal-content\">\n        <p>Are you sure you want to delete {{ item?.title }}</p>\n        <div class=\"modal-button\">\n          <button class=\"button btn-success\" (click)=\"onDeleteClick()\">Yes, delete</button>\n          <button class=\"button btn-light\" (click)=\"closeModal('custom-modal')\">Cancel</button>\n        </div>\n      </div>\n    </jw-modal>\n  </div>\n</div>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/course-list/course-list/course-list.component.html": 
@@ -61,7 +50,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"add-course\">\n  <button class=\"button\" type=\"button\" (click)=\"onAddCourseClick()\" routerLink=\"/new-course\">\n    <fa-icon [icon]=\"faPlus\"></fa-icon> Add course\n  </button>\n</div>\n\n<div class=\"course-items\">\n  <app-course-list-item\n    *ngFor=\"let item of courses$ | async | filter: search\"\n    [item]=\"item\"\n    (removeItem)=\"onDeleteCourseClick($event)\"\n  ></app-course-list-item>\n  <div #data>\n    <div *ngIf=\"courses$ | async; else nodata\"></div>\n    <ng-template #nodata>\n      <div class=\"course-list-item\">\n        <div class=\"course-description--block\">\n          <p>No data. Feel free to add new course.</p>\n        </div>\n      </div>\n    </ng-template>\n  </div>\n</div>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"add-course\">\n  <button class=\"button\" type=\"button\" (click)=\"onAddCourseClick()\" routerLink=\"/courses/new\">\n    <fa-icon [icon]=\"faPlus\"></fa-icon> Add course\n  </button>\n</div>\n\n<div class=\"course-items\">\n  <app-course-list-item\n    *ngFor=\"let item of courses$ | async | filter: search\"\n    [item]=\"item\"\n    (removeItem)=\"onDeleteCourseClick($event)\"\n  ></app-course-list-item>\n  <div #data>\n    <div *ngIf=\"courses$ | async; else nodata\"></div>\n    <ng-template #nodata>\n      <div class=\"course-list-item\">\n        <div class=\"course-description--block\">\n          <p>No data. Feel free to add new course.</p>\n        </div>\n      </div>\n    </ng-template>\n  </div>\n</div>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/course-list/new-course/new-course.component.html": 
@@ -72,7 +61,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<form class=\"new-course\" name=\"newCourse\" #courseForm=\"ngForm\">\n  <h3>New Course</h3>\n  <div class=\"two-col\">\n    <label for=\"title\">Title:</label>\n    <span class=\"required\">*required</span>\n  </div>\n  <input id=\"title\" type=\"text\" placeholder=\"Text input\" [(ngModel)]=\"courseItems.title\" name=\"title\" />\n\n  <div class=\"two-col\">\n    <label for=\"description\">Description:</label>\n    <span class=\"required\">*required</span>\n  </div>\n  <textarea placeholder=\"Add description\" [(ngModel)]=\"courseItems.description\" name=\"description\"> </textarea>\n\n  <div class=\"two-col\">\n    <label for=\"duration\">Duration:</label>\n    <span class=\"required\">*required</span>\n  </div>\n  <input id=\"duration\" type=\"time\" placeholder=\"Minutes\" [(ngModel)]=\"courseItems.duration\" name=\"minutes\" />\n\n  <div class=\"two-col\">\n    <label for=\"date\">Date:</label>\n    <span class=\"required\">*required</span>\n  </div>\n  <input id=\"date\" type=\"date\" placeholder=\"mm-dd-yyyy\" [(ngModel)]=\"courseItems.creationDate\" name=\"date\" />\n\n  <div class=\"two-col\">\n    <label for=\"author\">Author:</label>\n    <span class=\"required\">*required</span>\n  </div>\n  <input id=\"author\" type=\"text\" placeholder=\"Start typing\" name=\"author\" />\n\n  <div class=\"submit\">\n    <button type=\"submit\" class=\"button btn-light\" (click)=\"onCancelClick()\">Cancel</button>\n    <button type=\"submit\" class=\"button btn-submit\" (click)=\"onSaveClick()\">Save</button>\n  </div>\n</form>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<form class=\"new-course\" name=\"newCourse\" #courseForm=\"ngForm\">\n  <h3>New Course</h3>\n  <div class=\"two-col\">\n    <label for=\"title\">Title:</label>\n    <span class=\"required\">*required</span>\n  </div>\n  <input id=\"title\" type=\"text\" placeholder=\"Text input\" [(ngModel)]=\"courseItems.title\" name=\"title\" />\n\n  <div class=\"two-col\">\n    <label for=\"description\">Description:</label>\n    <span class=\"required\">*required</span>\n  </div>\n  <textarea placeholder=\"Add description\" [(ngModel)]=\"courseItems.description\" name=\"description\"> </textarea>\n\n  <div class=\"two-col\">\n    <label for=\"duration\">Duration:</label>\n    <span class=\"required\">*required</span>\n  </div>\n  <input id=\"duration\" type=\"time\" placeholder=\"Minutes\" [(ngModel)]=\"courseItems.duration\" name=\"minutes\" />\n\n  <div class=\"two-col\">\n    <label for=\"date\">Date:</label>\n    <span class=\"required\">*required</span>\n  </div>\n  <input id=\"date\" type=\"date\" placeholder=\"mm-dd-yyyy\" [(ngModel)]=\"courseItems.creationDate\" name=\"date\" />\n\n  <div class=\"two-col\">\n    <label for=\"author\">Author:</label>\n    <span class=\"required\">*required</span>\n  </div>\n  <input id=\"author\" type=\"text\" placeholder=\"Start typing\" name=\"author\" />\n\n  <div class=\"submit\">\n    <button type=\"submit\" class=\"button btn-light\" (click)=\"onCancelClick()\" routerLink=\"/courses\">Cancel</button>\n    <button type=\"submit\" class=\"button btn-submit\" (click)=\"onSaveClick()\" routerLink=\"/courses/new-course\">Save</button>\n  </div>\n</form>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/load-more/load-more.component.html": 
@@ -94,7 +83,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<form class=\"login\" name=\"login\" #loginForm=\"ngForm\" (ngSubmit)=\"onLoginClick(loginForm)\">\n  <div class=\"two-col\">\n    <h3>Login</h3>\n    <p class=\"validate-error\">Wrong e-mail or password</p>\n  </div>\n  <div class=\"two-col\">\n    <label for=\"login-email\">E-mail:</label>\n    <span class=\"required\">*required</span>\n  </div>\n  <input id=\"login-email\" type=\"email\" placeholder=\"Enter e-mail\" [(ngModel)]=\"emailValue\" name=\"emailValue\" />\n  <div class=\"two-col\">\n    <label for=\"login-pass\">Password:</label>\n    <span class=\"required\">*required</span>\n  </div>\n  <input id=\"login-pass\" type=\"password\" placeholder=\"Enter password\" [(ngModel)]=\"passwordValue\" name=\"passwordValue\" />\n  <div class=\"two-col login-action\">\n    <a class=\"login-forgot\" href=\"\">Forgot a password?</a>\n    <button type=\"submit\" class=\"button btn-light\">Login</button>\n  </div>\n</form>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<form class=\"login\" name=\"login\" #loginForm=\"ngForm\" (ngSubmit)=\"onLoginClick(loginForm)\">\n  <div class=\"two-col\">\n    <h3>Login</h3>\n    <p class=\"validate-error\">Wrong e-mail or password</p>\n  </div>\n  <div class=\"two-col\">\n    <label for=\"login-email\">E-mail:</label>\n    <span class=\"required\">*required</span>\n  </div>\n  <input id=\"login-email\" type=\"email\" placeholder=\"Enter e-mail\" [(ngModel)]=\"emailValue\" required name=\"emailValue\" />\n  <div class=\"two-col\">\n    <label for=\"login-pass\">Password:</label>\n    <span class=\"required\">*required</span>\n  </div>\n  <input id=\"login-pass\" type=\"password\" placeholder=\"Enter password\" [(ngModel)]=\"passwordValue\" required name=\"passwordValue\" />\n  <div class=\"two-col login-action\">\n    <a class=\"login-forgot\" href=\"\">Forgot a password?</a>\n    <button type=\"submit\" class=\"button btn-light\" [disabled]=\"!loginForm.valid\">Login</button>\n  </div>\n</form>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/modal-dialog/modal-dialog.component.html": 
@@ -108,6 +97,17 @@
             /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"jw-modal\">\n  <div class=\"jw-modal-body\">\n    <ng-content></ng-content>\n  </div>\n</div>\n<div class=\"jw-modal-background\"></div>\n");
             /***/ 
         }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/page-not-found/page-not-found.component.html": 
+        /*!****************************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/page-not-found/page-not-found.component.html ***!
+          \****************************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"not-found\">\n  <h1 class=\"not-found_title\"><span>404</span> Page not found!</h1>\n</div>\n");
+            /***/ 
+        }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/course-page/course-page.component.html": 
         /*!****************************************************************************************************!*\
           !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/course-page/course-page.component.html ***!
@@ -116,7 +116,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<app-breadcrumbs *ngIf=\"authService.isAuthenticates\"></app-breadcrumbs>\n<div class=\"container\">\n  <app-search></app-search>\n  <app-course-list></app-course-list>\n  <app-load-more></app-load-more>\n</div>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n  <app-search></app-search>\n  <app-course-list></app-course-list>\n  <app-load-more></app-load-more>\n</div>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/search/search.component.html": 
@@ -128,6 +128,17 @@
             "use strict";
             __webpack_require__.r(__webpack_exports__);
             /* harmony default export */ __webpack_exports__["default"] = ("<form class=\"search\" name=\"formSearch\" (ngSubmit)=\"onSearchClick(search)\">\n  <span class=\"search-icon\">\n    <input name=\"search\" type=\"text\" placeholder=\"Text to search\" #searchValueId id=\"searchValueId\" [(ngModel)]=\"searchValue\" />\n  </span>\n  <button type=\"submit\">Search</button>\n</form>\n");
+            /***/ 
+        }),
+        /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/shared/components/breadcrumbs/breadcrumbs.component.html": 
+        /*!****************************************************************************************************************!*\
+          !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/shared/components/breadcrumbs/breadcrumbs.component.html ***!
+          \****************************************************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = ("<div class=\"breadcrumbs\">\n  <div class=\"container\">\n    <a routerLink=\"/courses\">Courses</a>\n    {{ url }}\n  </div>\n</div>\n");
             /***/ 
         }),
         /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/shared/components/footer/footer.component.html": 
@@ -149,7 +160,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = ("<header class=\"header\">\n  <div class=\"container\">\n    <a class=\"logotype\" href=\"\" alt=\"logotype\"></a>\n    <div class=\"header-authorized--block\" *ngIf=\"authService.isAuthenticated\">\n      <button class=\"login\" type=\"button\" *ngIf=\"user\">{{ user.firstName }}</button>\n      <button class=\"login\" type=\"button\" *ngIf=\"!user\">User login</button>\n      <button class=\"logoff\" type=\"button\" (click)=\"onLogoffClick($event)\">Log off</button>\n    </div>\n  </div>\n</header>\n");
+            /* harmony default export */ __webpack_exports__["default"] = ("<header class=\"header\">\n  <div class=\"container\">\n    <a routerLink=\"courses\" class=\"logotype\" href=\"\" alt=\"logotype\"></a>\n    <div class=\"header-authorized--block\" *ngIf=\"hasUserInfo\">\n      <button class=\"login\" type=\"button\" *ngIf=\"user\">{{ user.firstName }}</button>\n      <button class=\"login\" type=\"button\" *ngIf=\"!user\">User login</button>\n      <button class=\"logoff\" type=\"button\" (click)=\"onLogoffClick()\">Log off</button>\n    </div>\n  </div>\n</header>\n");
             /***/ 
         }),
         /***/ "./node_modules/tslib/tslib.es6.js": 
@@ -466,29 +477,33 @@
             /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
             /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
             /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
-            /* harmony import */ var _pages_course_page_course_page_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/course-page/course-page.component */ "./src/app/pages/course-page/course-page.component.ts");
-            /* harmony import */ var _course_list_new_course_new_course_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./course-list/new-course/new-course.component */ "./src/app/course-list/new-course/new-course.component.ts");
+            /* harmony import */ var _course_list_new_course_new_course_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./course-list/new-course/new-course.component */ "./src/app/course-list/new-course/new-course.component.ts");
+            /* harmony import */ var _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./page-not-found/page-not-found.component */ "./src/app/page-not-found/page-not-found.component.ts");
+            /* harmony import */ var _core_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./core/guards/auth-guard.service */ "./src/app/core/guards/auth-guard.service.ts");
+            /* harmony import */ var _pages_course_page_course_page_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/course-page/course-page.component */ "./src/app/pages/course-page/course-page.component.ts");
             var routes = [
                 {
-                    path: '',
-                    redirectTo: '/courses',
-                    pathMatch: 'full',
+                    path: 'courses',
+                    canActivate: [_core_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]],
+                    component: _pages_course_page_course_page_component__WEBPACK_IMPORTED_MODULE_8__["CoursePageComponent"],
                 },
                 {
-                    path: 'courses',
-                    component: _pages_course_page_course_page_component__WEBPACK_IMPORTED_MODULE_5__["CoursePageComponent"],
+                    path: 'courses/:id',
+                    canActivate: [_core_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]],
+                    component: _course_list_new_course_new_course_component__WEBPACK_IMPORTED_MODULE_5__["NewCourseComponent"],
+                },
+                {
+                    path: 'courses/new',
+                    canActivate: [_core_guards_auth_guard_service__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]],
+                    component: _course_list_new_course_new_course_component__WEBPACK_IMPORTED_MODULE_5__["NewCourseComponent"],
                 },
                 {
                     path: 'login',
                     component: _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"],
                 },
                 {
-                    path: 'new-course',
-                    component: _course_list_new_course_new_course_component__WEBPACK_IMPORTED_MODULE_6__["NewCourseComponent"],
-                },
-                {
-                    path: 'edit-course/:taskID',
-                    component: _course_list_new_course_new_course_component__WEBPACK_IMPORTED_MODULE_6__["NewCourseComponent"],
+                    path: '**',
+                    component: _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_6__["PageNotFoundComponent"],
                 },
             ];
             var AppRoutesModule = /** @class */ (function () {
@@ -533,6 +548,13 @@
                     this.authService = authService;
                     this.title = 'Video Course | Main page';
                 }
+                Object.defineProperty(AppComponent.prototype, "userIsAuthorized", {
+                    get: function () {
+                        return this.authService.isAuthorized;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 return AppComponent;
             }());
             AppComponent.ctorParameters = function () { return [
@@ -565,17 +587,18 @@
             /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
             /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
             /* harmony import */ var _pages_course_page_course_page_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pages/course-page/course-page.component */ "./src/app/pages/course-page/course-page.component.ts");
-            /* harmony import */ var _breadcrumbs_breadcrumbs_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./breadcrumbs/breadcrumbs.component */ "./src/app/breadcrumbs/breadcrumbs.component.ts");
-            /* harmony import */ var _search_search_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./search/search.component */ "./src/app/search/search.component.ts");
-            /* harmony import */ var _load_more_load_more_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./load-more/load-more.component */ "./src/app/load-more/load-more.component.ts");
-            /* harmony import */ var _course_list_course_list_course_list_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./course-list/course-list/course-list.component */ "./src/app/course-list/course-list/course-list.component.ts");
-            /* harmony import */ var _course_list_course_list_item_course_list_item_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./course-list/course-list-item/course-list-item.component */ "./src/app/course-list/course-list-item/course-list-item.component.ts");
-            /* harmony import */ var _shared_shared_module__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./shared/shared.module */ "./src/app/shared/shared.module.ts");
-            /* harmony import */ var _shared_directives_border_color_directive__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./shared/directives/border-color.directive */ "./src/app/shared/directives/border-color.directive.ts");
-            /* harmony import */ var _modal_dialog_modal_dialog_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./modal-dialog/modal-dialog.component */ "./src/app/modal-dialog/modal-dialog.component.ts");
-            /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
-            /* harmony import */ var _app_routes_module__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./app-routes.module */ "./src/app/app-routes.module.ts");
-            /* harmony import */ var _course_list_new_course_new_course_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./course-list/new-course/new-course.component */ "./src/app/course-list/new-course/new-course.component.ts");
+            /* harmony import */ var _search_search_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./search/search.component */ "./src/app/search/search.component.ts");
+            /* harmony import */ var _load_more_load_more_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./load-more/load-more.component */ "./src/app/load-more/load-more.component.ts");
+            /* harmony import */ var _shared_shared_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./shared/shared.module */ "./src/app/shared/shared.module.ts");
+            /* harmony import */ var _shared_directives_border_color_directive__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./shared/directives/border-color.directive */ "./src/app/shared/directives/border-color.directive.ts");
+            /* harmony import */ var _modal_dialog_modal_dialog_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./modal-dialog/modal-dialog.component */ "./src/app/modal-dialog/modal-dialog.component.ts");
+            /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+            /* harmony import */ var _app_routes_module__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./app-routes.module */ "./src/app/app-routes.module.ts");
+            /* harmony import */ var _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./page-not-found/page-not-found.component */ "./src/app/page-not-found/page-not-found.component.ts");
+            /* harmony import */ var _course_list_new_course_new_course_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./course-list/new-course/new-course.component */ "./src/app/course-list/new-course/new-course.component.ts");
+            /* harmony import */ var _shared_components_breadcrumbs_breadcrumbs_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./shared/components/breadcrumbs/breadcrumbs.component */ "./src/app/shared/components/breadcrumbs/breadcrumbs.component.ts");
+            /* harmony import */ var _course_list_course_list_course_list_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./course-list/course-list/course-list.component */ "./src/app/course-list/course-list/course-list.component.ts");
+            /* harmony import */ var _course_list_course_list_item_course_list_item_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./course-list/course-list-item/course-list-item.component */ "./src/app/course-list/course-list-item/course-list-item.component.ts");
             var AppModule = /** @class */ (function () {
                 function AppModule() {
                 }
@@ -586,59 +609,24 @@
                     declarations: [
                         _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"],
                         _pages_course_page_course_page_component__WEBPACK_IMPORTED_MODULE_8__["CoursePageComponent"],
-                        _breadcrumbs_breadcrumbs_component__WEBPACK_IMPORTED_MODULE_9__["BreadcrumbsComponent"],
-                        _search_search_component__WEBPACK_IMPORTED_MODULE_10__["SearchComponent"],
-                        _load_more_load_more_component__WEBPACK_IMPORTED_MODULE_11__["LoadMoreComponent"],
-                        _course_list_course_list_course_list_component__WEBPACK_IMPORTED_MODULE_12__["CourseListComponent"],
-                        _course_list_course_list_item_course_list_item_component__WEBPACK_IMPORTED_MODULE_13__["CourseListItemComponent"],
-                        _shared_directives_border_color_directive__WEBPACK_IMPORTED_MODULE_15__["BorderColorDirective"],
-                        _modal_dialog_modal_dialog_component__WEBPACK_IMPORTED_MODULE_16__["ModalDialogComponent"],
-                        _login_login_component__WEBPACK_IMPORTED_MODULE_17__["LoginComponent"],
-                        _course_list_new_course_new_course_component__WEBPACK_IMPORTED_MODULE_19__["NewCourseComponent"],
+                        _search_search_component__WEBPACK_IMPORTED_MODULE_9__["SearchComponent"],
+                        _load_more_load_more_component__WEBPACK_IMPORTED_MODULE_10__["LoadMoreComponent"],
+                        _shared_directives_border_color_directive__WEBPACK_IMPORTED_MODULE_12__["BorderColorDirective"],
+                        _modal_dialog_modal_dialog_component__WEBPACK_IMPORTED_MODULE_13__["ModalDialogComponent"],
+                        _login_login_component__WEBPACK_IMPORTED_MODULE_14__["LoginComponent"],
+                        _page_not_found_page_not_found_component__WEBPACK_IMPORTED_MODULE_16__["PageNotFoundComponent"],
+                        _course_list_new_course_new_course_component__WEBPACK_IMPORTED_MODULE_17__["NewCourseComponent"],
+                        _shared_components_breadcrumbs_breadcrumbs_component__WEBPACK_IMPORTED_MODULE_18__["BreadcrumbsComponent"],
+                        _course_list_course_list_course_list_component__WEBPACK_IMPORTED_MODULE_19__["CourseListComponent"],
+                        _course_list_course_list_item_course_list_item_component__WEBPACK_IMPORTED_MODULE_20__["CourseListItemComponent"],
+                        _pages_course_page_course_page_component__WEBPACK_IMPORTED_MODULE_8__["CoursePageComponent"],
                     ],
-                    imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"], _shared_shared_module__WEBPACK_IMPORTED_MODULE_14__["SharedModule"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeModule"], _core_core_module__WEBPACK_IMPORTED_MODULE_5__["CoreModule"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterModule"].forRoot([]), _app_routes_module__WEBPACK_IMPORTED_MODULE_18__["AppRoutesModule"]],
+                    imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"], _shared_shared_module__WEBPACK_IMPORTED_MODULE_11__["SharedModule"], _fortawesome_angular_fontawesome__WEBPACK_IMPORTED_MODULE_4__["FontAwesomeModule"], _core_core_module__WEBPACK_IMPORTED_MODULE_5__["CoreModule"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["RouterModule"].forRoot([]), _app_routes_module__WEBPACK_IMPORTED_MODULE_15__["AppRoutesModule"]],
                     schemas: [_angular_core__WEBPACK_IMPORTED_MODULE_2__["CUSTOM_ELEMENTS_SCHEMA"]],
                     providers: [],
                     bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]],
                 })
             ], AppModule);
-            /***/ 
-        }),
-        /***/ "./src/app/breadcrumbs/breadcrumbs.component.scss": 
-        /*!********************************************************!*\
-          !*** ./src/app/breadcrumbs/breadcrumbs.component.scss ***!
-          \********************************************************/
-        /*! exports provided: default */
-        /***/ (function (module, __webpack_exports__, __webpack_require__) {
-            "use strict";
-            __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = (".breadcrumbs {\n  background: #fff;\n  padding: 20px 0;\n}\n.breadcrumbs a {\n  font-family: SourceSansPro;\n  font-size: 14px;\n  font-weight: 600;\n  line-height: 1.71;\n  color: #2c2f3c;\n  text-decoration: none;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvYnJlYWRjcnVtYnMvSzpcXGFuZ3VsYXJMXFxhbmd1bGFyVGVzdC9zcmNcXGFwcFxcYnJlYWRjcnVtYnNcXGJyZWFkY3J1bWJzLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9icmVhZGNydW1icy9icmVhZGNydW1icy5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGdCQUFBO0VBQ0EsZUFBQTtBQ0NGO0FEQ0U7RUFDRSwwQkFBQTtFQUNBLGVBQUE7RUFDQSxnQkFBQTtFQUNBLGlCQUFBO0VBQ0EsY0FBQTtFQUNBLHFCQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9icmVhZGNydW1icy9icmVhZGNydW1icy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5icmVhZGNydW1icyB7XG4gIGJhY2tncm91bmQ6ICNmZmY7XG4gIHBhZGRpbmc6IDIwcHggMDtcblxuICBhIHtcbiAgICBmb250LWZhbWlseTogU291cmNlU2Fuc1BybztcbiAgICBmb250LXNpemU6IDE0cHg7XG4gICAgZm9udC13ZWlnaHQ6IDYwMDtcbiAgICBsaW5lLWhlaWdodDogMS43MTtcbiAgICBjb2xvcjogIzJjMmYzYztcbiAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gIH1cbn1cbiIsIi5icmVhZGNydW1icyB7XG4gIGJhY2tncm91bmQ6ICNmZmY7XG4gIHBhZGRpbmc6IDIwcHggMDtcbn1cbi5icmVhZGNydW1icyBhIHtcbiAgZm9udC1mYW1pbHk6IFNvdXJjZVNhbnNQcm87XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbiAgbGluZS1oZWlnaHQ6IDEuNzE7XG4gIGNvbG9yOiAjMmMyZjNjO1xuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG59Il19 */");
-            /***/ 
-        }),
-        /***/ "./src/app/breadcrumbs/breadcrumbs.component.ts": 
-        /*!******************************************************!*\
-          !*** ./src/app/breadcrumbs/breadcrumbs.component.ts ***!
-          \******************************************************/
-        /*! exports provided: BreadcrumbsComponent */
-        /***/ (function (module, __webpack_exports__, __webpack_require__) {
-            "use strict";
-            __webpack_require__.r(__webpack_exports__);
-            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BreadcrumbsComponent", function () { return BreadcrumbsComponent; });
-            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-            var BreadcrumbsComponent = /** @class */ (function () {
-                function BreadcrumbsComponent() {
-                }
-                BreadcrumbsComponent.prototype.ngOnInit = function () { };
-                return BreadcrumbsComponent;
-            }());
-            BreadcrumbsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-                    selector: 'app-breadcrumbs',
-                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./breadcrumbs.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/breadcrumbs/breadcrumbs.component.html")).default,
-                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./breadcrumbs.component.scss */ "./src/app/breadcrumbs/breadcrumbs.component.scss")).default]
-                })
-            ], BreadcrumbsComponent);
             /***/ 
         }),
         /***/ "./src/app/core/core.module.ts": 
@@ -663,6 +651,49 @@
                     imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"]],
                 })
             ], CoreModule);
+            /***/ 
+        }),
+        /***/ "./src/app/core/guards/auth-guard.service.ts": 
+        /*!***************************************************!*\
+          !*** ./src/app/core/guards/auth-guard.service.ts ***!
+          \***************************************************/
+        /*! exports provided: AuthGuard */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthGuard", function () { return AuthGuard; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+            /* harmony import */ var src_app_shared_services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/shared/services/auth.service */ "./src/app/shared/services/auth.service.ts");
+            var AuthGuard = /** @class */ (function () {
+                function AuthGuard(authService, router) {
+                    this.authService = authService;
+                    this.router = router;
+                }
+                AuthGuard.prototype.canActivate = function (next, state) {
+                    var url = state.url;
+                    return this.checkLogin(url);
+                };
+                AuthGuard.prototype.checkLogin = function (url) {
+                    if (this.authService.isAuthorized) {
+                        return true;
+                    }
+                    this.authService.redirectUrl = url;
+                    var loginPageUrlTree = this.router.parseUrl('/login');
+                    return loginPageUrlTree;
+                };
+                return AuthGuard;
+            }());
+            AuthGuard.ctorParameters = function () { return [
+                { type: src_app_shared_services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] },
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+            ]; };
+            AuthGuard = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+                    providedIn: 'root',
+                })
+            ], AuthGuard);
             /***/ 
         }),
         /***/ "./src/app/course-list/course-list-item.interface.ts": 
@@ -731,13 +762,12 @@
                     this.faTrashAlt = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faTrashAlt"];
                     this.faStar = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_2__["faStar"];
                 }
-                CourseListItemComponent.prototype.onEditCourseClick = function () {
-                    console.log('onEditCourseClick');
+                CourseListItemComponent.prototype.onEditClick = function () {
+                    console.log('fff');
                     this.editItem.emit(this.item);
                 };
-                CourseListItemComponent.prototype.onDeleteCourseClick = function () {
+                CourseListItemComponent.prototype.onDeleteClick = function () {
                     this.removeItem.emit(this.item);
-                    console.log('onDeleteCourseClick');
                 };
                 CourseListItemComponent.prototype.ngOnInit = function () { };
                 CourseListItemComponent.prototype.openModal = function (id) {
@@ -795,10 +825,12 @@
             /* harmony import */ var _shared_services_courses_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../../shared/services/courses.service */ "./src/app/shared/services/courses.service.ts");
             /* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.es.js");
             /* harmony import */ var _shared_pipes_filter_pipe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./../../shared/pipes/filter.pipe */ "./src/app/shared/pipes/filter.pipe.ts");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
             var CourseListComponent = /** @class */ (function () {
-                function CourseListComponent(coursesService, filterPipe) {
+                function CourseListComponent(coursesService, filterPipe, router) {
                     this.coursesService = coursesService;
                     this.filterPipe = filterPipe;
+                    this.router = router;
                     this.faPlus = _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_3__["faPlus"];
                 }
                 CourseListComponent.prototype.ngOnInit = function () {
@@ -816,21 +848,20 @@
                     return this.filterPipe.transform(courses$, searchText);
                 };
                 CourseListComponent.prototype.onAddCourseClick = function () {
-                    this.coursesService.addCourse();
-                    console.log('onAddCourseClick');
+                    this.router.navigate(['courses/new']);
                 };
                 CourseListComponent.prototype.onDeleteCourseClick = function (item) {
-                    console.log('delete');
                     this.coursesService.removeItem(item);
                 };
                 CourseListComponent.prototype.onEditCourseClick = function (item) {
-                    console.log('edit');
+                    this.router.navigate(['item', item.id]);
                 };
                 return CourseListComponent;
             }());
             CourseListComponent.ctorParameters = function () { return [
                 { type: _shared_services_courses_service__WEBPACK_IMPORTED_MODULE_2__["CoursesService"] },
-                { type: _shared_pipes_filter_pipe__WEBPACK_IMPORTED_MODULE_4__["FilterPipe"] }
+                { type: _shared_pipes_filter_pipe__WEBPACK_IMPORTED_MODULE_4__["FilterPipe"] },
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }
             ]; };
             CourseListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -864,20 +895,44 @@
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
             /* harmony import */ var _course_list_item_interface__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../course-list-item.interface */ "./src/app/course-list/course-list-item.interface.ts");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+            /* harmony import */ var src_app_shared_services_courses_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/shared/services/courses.service */ "./src/app/shared/services/courses.service.ts");
+            /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+            /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
             var NewCourseComponent = /** @class */ (function () {
-                function NewCourseComponent() {
+                function NewCourseComponent(router, route, coursesService) {
+                    this.router = router;
+                    this.route = route;
+                    this.coursesService = coursesService;
                 }
                 NewCourseComponent.prototype.ngOnInit = function () {
+                    var _this = this;
                     this.courseItems = new _course_list_item_interface__WEBPACK_IMPORTED_MODULE_2__["CCourseListItem"]();
+                    this.route.paramMap
+                        .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["switchMap"])(function (params) {
+                        return params.get('id') ? _this.coursesService.getCourse(+params.get('id')) : Object(rxjs__WEBPACK_IMPORTED_MODULE_6__["of"])(null);
+                    }))
+                        .subscribe(function () { return (_this.courseItems = Object.assign({}, _this.courseItems)); }, function (err) { return console.log(err); });
                 };
                 NewCourseComponent.prototype.onCancelClick = function () {
-                    this.courseItems = new _course_list_item_interface__WEBPACK_IMPORTED_MODULE_2__["CCourseListItem"]();
+                    this.onGoBack();
                 };
                 NewCourseComponent.prototype.onSaveClick = function () {
-                    console.log(this.courseItems);
+                    var courseItems = Object.assign({}, this.courseItems);
+                    var method = courseItems.id ? 'updateCourse' : 'createCourse';
+                    this.coursesService[method](courseItems);
+                    this.onGoBack();
+                };
+                NewCourseComponent.prototype.onGoBack = function () {
+                    this.router.navigate(['/courses']);
                 };
                 return NewCourseComponent;
             }());
+            NewCourseComponent.ctorParameters = function () { return [
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] },
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
+                { type: src_app_shared_services_courses_service__WEBPACK_IMPORTED_MODULE_4__["CoursesService"] }
+            ]; };
             NewCourseComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
                     selector: 'app-new-course',
@@ -935,7 +990,7 @@
         /***/ (function (module, __webpack_exports__, __webpack_require__) {
             "use strict";
             __webpack_require__.r(__webpack_exports__);
-            /* harmony default export */ __webpack_exports__["default"] = (".login {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 370px;\n  min-height: 300px;\n  border-radius: 8px;\n  box-shadow: 0 1px 24px 0 rgba(18, 21, 35, 0.08);\n  border: solid 1px transparent;\n  background: #fff;\n  padding: 25px;\n}\n.login input {\n  width: 100%;\n  height: 36px;\n  border-radius: 3px;\n  border: solid 1px #d9dbe3;\n  padding: 0 12px;\n  margin: 10px 0;\n}\n.login ::-webkit-input-placeholder {\n  color: #c0c3ce;\n}\n.login ::-moz-placeholder {\n  color: #c0c3ce;\n}\n.login ::-ms-input-placeholder {\n  color: #c0c3ce;\n}\n.login ::placeholder {\n  color: #c0c3ce;\n}\n.login h3 {\n  font-size: 24px;\n  font-weight: 600;\n  color: #2c2f3c;\n}\n.login label {\n  color: #525462;\n  font-size: 14px;\n  font-weight: 600;\n  letter-spacing: 0.22px;\n}\n.login-forgot {\n  font-size: 12px;\n  color: #5681ee;\n  letter-spacing: 0.19px;\n}\n.login button {\n  color: #a8a9b4;\n}\n.login-action {\n  margin-top: 25px;\n}\n.validate-error {\n  color: #ff4e33;\n  font-size: 12px;\n  letter-spacing: 0.19px;\n}\n.required {\n  font-size: 12px;\n  letter-spacing: 0.19px;\n  color: #6c7283;\n}\n.two-col {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbG9naW4vSzpcXGFuZ3VsYXJMXFxhbmd1bGFyVGVzdC9zcmNcXGFwcFxcbG9naW5cXGxvZ2luLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9sb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGVBQUE7RUFDQSxRQUFBO0VBQ0EsU0FBQTtFQUNBLGdDQUFBO0VBQ0EsWUFBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSwrQ0FBQTtFQUNBLDZCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxhQUFBO0FDQ0Y7QURDRTtFQUNFLFdBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSx5QkFBQTtFQUNBLGVBQUE7RUFDQSxjQUFBO0FDQ0o7QURFRTtFQUNFLGNBQUE7QUNBSjtBRERFO0VBQ0UsY0FBQTtBQ0FKO0FEREU7RUFDRSxjQUFBO0FDQUo7QURERTtFQUNFLGNBQUE7QUNBSjtBREdFO0VBQ0UsZUFBQTtFQUNBLGdCQUFBO0VBQ0EsY0FBQTtBQ0RKO0FESUU7RUFDRSxjQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQUFBO0VBQ0Esc0JBQUE7QUNGSjtBREtFO0VBQ0UsZUFBQTtFQUNBLGNBQUE7RUFDQSxzQkFBQTtBQ0hKO0FETUU7RUFDRSxjQUFBO0FDSko7QURPRTtFQUNFLGdCQUFBO0FDTEo7QURTQTtFQUNFLGNBQUE7RUFDQSxlQUFBO0VBQ0Esc0JBQUE7QUNORjtBRFNBO0VBQ0UsZUFBQTtFQUNBLHNCQUFBO0VBQ0EsY0FBQTtBQ05GO0FEU0E7RUFDRSxhQUFBO0VBQ0EsOEJBQUE7RUFDQSxtQkFBQTtBQ05GIiwiZmlsZSI6InNyYy9hcHAvbG9naW4vbG9naW4uY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubG9naW4ge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIHRvcDogNTAlO1xuICBsZWZ0OiA1MCU7XG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICB3aWR0aDogMzcwcHg7XG4gIG1pbi1oZWlnaHQ6IDMwMHB4O1xuICBib3JkZXItcmFkaXVzOiA4cHg7XG4gIGJveC1zaGFkb3c6IDAgMXB4IDI0cHggMCByZ2JhKDE4LCAyMSwgMzUsIDAuMDgpO1xuICBib3JkZXI6IHNvbGlkIDFweCB0cmFuc3BhcmVudDtcbiAgYmFja2dyb3VuZDogI2ZmZjtcbiAgcGFkZGluZzogMjVweDtcblxuICBpbnB1dCB7XG4gICAgd2lkdGg6IDEwMCU7XG4gICAgaGVpZ2h0OiAzNnB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDNweDtcbiAgICBib3JkZXI6IHNvbGlkIDFweCAjZDlkYmUzO1xuICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICBtYXJnaW46IDEwcHggMDtcbiAgfVxuXG4gIDo6cGxhY2Vob2xkZXIge1xuICAgIGNvbG9yOiAjYzBjM2NlO1xuICB9XG5cbiAgaDMge1xuICAgIGZvbnQtc2l6ZTogMjRweDtcbiAgICBmb250LXdlaWdodDogNjAwO1xuICAgIGNvbG9yOiAjMmMyZjNjO1xuICB9XG5cbiAgbGFiZWwge1xuICAgIGNvbG9yOiAjNTI1NDYyO1xuICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICBmb250LXdlaWdodDogNjAwO1xuICAgIGxldHRlci1zcGFjaW5nOiAwLjIycHg7XG4gIH1cblxuICAmLWZvcmdvdCB7XG4gICAgZm9udC1zaXplOiAxMnB4O1xuICAgIGNvbG9yOiAjNTY4MWVlO1xuICAgIGxldHRlci1zcGFjaW5nOiAwLjE5cHg7XG4gIH1cblxuICBidXR0b24ge1xuICAgIGNvbG9yOiAjYThhOWI0O1xuICB9XG5cbiAgJi1hY3Rpb24ge1xuICAgIG1hcmdpbi10b3A6IDI1cHg7XG4gIH1cbn1cblxuLnZhbGlkYXRlLWVycm9yIHtcbiAgY29sb3I6ICNmZjRlMzM7XG4gIGZvbnQtc2l6ZTogMTJweDtcbiAgbGV0dGVyLXNwYWNpbmc6IDAuMTlweDtcbn1cblxuLnJlcXVpcmVkIHtcbiAgZm9udC1zaXplOiAxMnB4O1xuICBsZXR0ZXItc3BhY2luZzogMC4xOXB4O1xuICBjb2xvcjogIzZjNzI4Mztcbn1cblxuLnR3by1jb2wge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG4iLCIubG9naW4ge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIHRvcDogNTAlO1xuICBsZWZ0OiA1MCU7XG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICB3aWR0aDogMzcwcHg7XG4gIG1pbi1oZWlnaHQ6IDMwMHB4O1xuICBib3JkZXItcmFkaXVzOiA4cHg7XG4gIGJveC1zaGFkb3c6IDAgMXB4IDI0cHggMCByZ2JhKDE4LCAyMSwgMzUsIDAuMDgpO1xuICBib3JkZXI6IHNvbGlkIDFweCB0cmFuc3BhcmVudDtcbiAgYmFja2dyb3VuZDogI2ZmZjtcbiAgcGFkZGluZzogMjVweDtcbn1cbi5sb2dpbiBpbnB1dCB7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDM2cHg7XG4gIGJvcmRlci1yYWRpdXM6IDNweDtcbiAgYm9yZGVyOiBzb2xpZCAxcHggI2Q5ZGJlMztcbiAgcGFkZGluZzogMCAxMnB4O1xuICBtYXJnaW46IDEwcHggMDtcbn1cbi5sb2dpbiA6OnBsYWNlaG9sZGVyIHtcbiAgY29sb3I6ICNjMGMzY2U7XG59XG4ubG9naW4gaDMge1xuICBmb250LXNpemU6IDI0cHg7XG4gIGZvbnQtd2VpZ2h0OiA2MDA7XG4gIGNvbG9yOiAjMmMyZjNjO1xufVxuLmxvZ2luIGxhYmVsIHtcbiAgY29sb3I6ICM1MjU0NjI7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbiAgbGV0dGVyLXNwYWNpbmc6IDAuMjJweDtcbn1cbi5sb2dpbi1mb3Jnb3Qge1xuICBmb250LXNpemU6IDEycHg7XG4gIGNvbG9yOiAjNTY4MWVlO1xuICBsZXR0ZXItc3BhY2luZzogMC4xOXB4O1xufVxuLmxvZ2luIGJ1dHRvbiB7XG4gIGNvbG9yOiAjYThhOWI0O1xufVxuLmxvZ2luLWFjdGlvbiB7XG4gIG1hcmdpbi10b3A6IDI1cHg7XG59XG5cbi52YWxpZGF0ZS1lcnJvciB7XG4gIGNvbG9yOiAjZmY0ZTMzO1xuICBmb250LXNpemU6IDEycHg7XG4gIGxldHRlci1zcGFjaW5nOiAwLjE5cHg7XG59XG5cbi5yZXF1aXJlZCB7XG4gIGZvbnQtc2l6ZTogMTJweDtcbiAgbGV0dGVyLXNwYWNpbmc6IDAuMTlweDtcbiAgY29sb3I6ICM2YzcyODM7XG59XG5cbi50d28tY29sIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xufSJdfQ== */");
+            /* harmony default export */ __webpack_exports__["default"] = (".login {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n  width: 370px;\n  min-height: 300px;\n  border-radius: 8px;\n  box-shadow: 0 1px 24px 0 rgba(18, 21, 35, 0.08);\n  border: solid 1px transparent;\n  background: #fff;\n  padding: 25px;\n}\n.login input {\n  width: 100%;\n  height: 36px;\n  border-radius: 3px;\n  border: solid 1px #d9dbe3;\n  padding: 0 12px;\n  margin: 10px 0;\n}\n.login ::-webkit-input-placeholder {\n  color: #c0c3ce;\n}\n.login ::-moz-placeholder {\n  color: #c0c3ce;\n}\n.login ::-ms-input-placeholder {\n  color: #c0c3ce;\n}\n.login ::placeholder {\n  color: #c0c3ce;\n}\n.login h3 {\n  font-size: 24px;\n  font-weight: 600;\n  color: #2c2f3c;\n}\n.login label {\n  color: #525462;\n  font-size: 14px;\n  font-weight: 600;\n  letter-spacing: 0.22px;\n}\n.login-forgot {\n  font-size: 12px;\n  color: #5681ee;\n  letter-spacing: 0.19px;\n}\n.login button {\n  background: #9bc837;\n  color: #fff;\n}\n.login button[disabled] {\n  background: #d9dbe3;\n  color: #a8a9b4;\n  cursor: not-allowed;\n}\n.login-action {\n  margin-top: 25px;\n}\n.validate-error {\n  color: #ff4e33;\n  font-size: 12px;\n  letter-spacing: 0.19px;\n}\n.required {\n  font-size: 12px;\n  letter-spacing: 0.19px;\n  color: #6c7283;\n}\n.two-col {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbG9naW4vSzpcXGFuZ3VsYXJMXFxhbmd1bGFyVGVzdC9zcmNcXGFwcFxcbG9naW5cXGxvZ2luLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9sb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGVBQUE7RUFDQSxRQUFBO0VBQ0EsU0FBQTtFQUNBLGdDQUFBO0VBQ0EsWUFBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSwrQ0FBQTtFQUNBLDZCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxhQUFBO0FDQ0Y7QURDRTtFQUNFLFdBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSx5QkFBQTtFQUNBLGVBQUE7RUFDQSxjQUFBO0FDQ0o7QURFRTtFQUNFLGNBQUE7QUNBSjtBRERFO0VBQ0UsY0FBQTtBQ0FKO0FEREU7RUFDRSxjQUFBO0FDQUo7QURERTtFQUNFLGNBQUE7QUNBSjtBREdFO0VBQ0UsZUFBQTtFQUNBLGdCQUFBO0VBQ0EsY0FBQTtBQ0RKO0FESUU7RUFDRSxjQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQUFBO0VBQ0Esc0JBQUE7QUNGSjtBREtFO0VBQ0UsZUFBQTtFQUNBLGNBQUE7RUFDQSxzQkFBQTtBQ0hKO0FETUU7RUFDRSxtQkFBQTtFQUNBLFdBQUE7QUNKSjtBRE1JO0VBQ0UsbUJBQUE7RUFDQSxjQUFBO0VBQ0EsbUJBQUE7QUNKTjtBRFFFO0VBQ0UsZ0JBQUE7QUNOSjtBRFVBO0VBQ0UsY0FBQTtFQUNBLGVBQUE7RUFDQSxzQkFBQTtBQ1BGO0FEVUE7RUFDRSxlQUFBO0VBQ0Esc0JBQUE7RUFDQSxjQUFBO0FDUEY7QURVQTtFQUNFLGFBQUE7RUFDQSw4QkFBQTtFQUNBLG1CQUFBO0FDUEYiLCJmaWxlIjoic3JjL2FwcC9sb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5sb2dpbiB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgdG9wOiA1MCU7XG4gIGxlZnQ6IDUwJTtcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSk7XG4gIHdpZHRoOiAzNzBweDtcbiAgbWluLWhlaWdodDogMzAwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDhweDtcbiAgYm94LXNoYWRvdzogMCAxcHggMjRweCAwIHJnYmEoMTgsIDIxLCAzNSwgMC4wOCk7XG4gIGJvcmRlcjogc29saWQgMXB4IHRyYW5zcGFyZW50O1xuICBiYWNrZ3JvdW5kOiAjZmZmO1xuICBwYWRkaW5nOiAyNXB4O1xuXG4gIGlucHV0IHtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBoZWlnaHQ6IDM2cHg7XG4gICAgYm9yZGVyLXJhZGl1czogM3B4O1xuICAgIGJvcmRlcjogc29saWQgMXB4ICNkOWRiZTM7XG4gICAgcGFkZGluZzogMCAxMnB4O1xuICAgIG1hcmdpbjogMTBweCAwO1xuICB9XG5cbiAgOjpwbGFjZWhvbGRlciB7XG4gICAgY29sb3I6ICNjMGMzY2U7XG4gIH1cblxuICBoMyB7XG4gICAgZm9udC1zaXplOiAyNHB4O1xuICAgIGZvbnQtd2VpZ2h0OiA2MDA7XG4gICAgY29sb3I6ICMyYzJmM2M7XG4gIH1cblxuICBsYWJlbCB7XG4gICAgY29sb3I6ICM1MjU0NjI7XG4gICAgZm9udC1zaXplOiAxNHB4O1xuICAgIGZvbnQtd2VpZ2h0OiA2MDA7XG4gICAgbGV0dGVyLXNwYWNpbmc6IDAuMjJweDtcbiAgfVxuXG4gICYtZm9yZ290IHtcbiAgICBmb250LXNpemU6IDEycHg7XG4gICAgY29sb3I6ICM1NjgxZWU7XG4gICAgbGV0dGVyLXNwYWNpbmc6IDAuMTlweDtcbiAgfVxuXG4gIGJ1dHRvbiB7XG4gICAgYmFja2dyb3VuZDogIzliYzgzNztcbiAgICBjb2xvcjogI2ZmZjtcblxuICAgICZbZGlzYWJsZWRdIHtcbiAgICAgIGJhY2tncm91bmQ6ICNkOWRiZTM7XG4gICAgICBjb2xvcjogI2E4YTliNDtcbiAgICAgIGN1cnNvcjogbm90LWFsbG93ZWQ7XG4gICAgfVxuICB9XG5cbiAgJi1hY3Rpb24ge1xuICAgIG1hcmdpbi10b3A6IDI1cHg7XG4gIH1cbn1cblxuLnZhbGlkYXRlLWVycm9yIHtcbiAgY29sb3I6ICNmZjRlMzM7XG4gIGZvbnQtc2l6ZTogMTJweDtcbiAgbGV0dGVyLXNwYWNpbmc6IDAuMTlweDtcbn1cblxuLnJlcXVpcmVkIHtcbiAgZm9udC1zaXplOiAxMnB4O1xuICBsZXR0ZXItc3BhY2luZzogMC4xOXB4O1xuICBjb2xvcjogIzZjNzI4Mztcbn1cblxuLnR3by1jb2wge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG4iLCIubG9naW4ge1xuICBwb3NpdGlvbjogZml4ZWQ7XG4gIHRvcDogNTAlO1xuICBsZWZ0OiA1MCU7XG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICB3aWR0aDogMzcwcHg7XG4gIG1pbi1oZWlnaHQ6IDMwMHB4O1xuICBib3JkZXItcmFkaXVzOiA4cHg7XG4gIGJveC1zaGFkb3c6IDAgMXB4IDI0cHggMCByZ2JhKDE4LCAyMSwgMzUsIDAuMDgpO1xuICBib3JkZXI6IHNvbGlkIDFweCB0cmFuc3BhcmVudDtcbiAgYmFja2dyb3VuZDogI2ZmZjtcbiAgcGFkZGluZzogMjVweDtcbn1cbi5sb2dpbiBpbnB1dCB7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDM2cHg7XG4gIGJvcmRlci1yYWRpdXM6IDNweDtcbiAgYm9yZGVyOiBzb2xpZCAxcHggI2Q5ZGJlMztcbiAgcGFkZGluZzogMCAxMnB4O1xuICBtYXJnaW46IDEwcHggMDtcbn1cbi5sb2dpbiA6OnBsYWNlaG9sZGVyIHtcbiAgY29sb3I6ICNjMGMzY2U7XG59XG4ubG9naW4gaDMge1xuICBmb250LXNpemU6IDI0cHg7XG4gIGZvbnQtd2VpZ2h0OiA2MDA7XG4gIGNvbG9yOiAjMmMyZjNjO1xufVxuLmxvZ2luIGxhYmVsIHtcbiAgY29sb3I6ICM1MjU0NjI7XG4gIGZvbnQtc2l6ZTogMTRweDtcbiAgZm9udC13ZWlnaHQ6IDYwMDtcbiAgbGV0dGVyLXNwYWNpbmc6IDAuMjJweDtcbn1cbi5sb2dpbi1mb3Jnb3Qge1xuICBmb250LXNpemU6IDEycHg7XG4gIGNvbG9yOiAjNTY4MWVlO1xuICBsZXR0ZXItc3BhY2luZzogMC4xOXB4O1xufVxuLmxvZ2luIGJ1dHRvbiB7XG4gIGJhY2tncm91bmQ6ICM5YmM4Mzc7XG4gIGNvbG9yOiAjZmZmO1xufVxuLmxvZ2luIGJ1dHRvbltkaXNhYmxlZF0ge1xuICBiYWNrZ3JvdW5kOiAjZDlkYmUzO1xuICBjb2xvcjogI2E4YTliNDtcbiAgY3Vyc29yOiBub3QtYWxsb3dlZDtcbn1cbi5sb2dpbi1hY3Rpb24ge1xuICBtYXJnaW4tdG9wOiAyNXB4O1xufVxuXG4udmFsaWRhdGUtZXJyb3Ige1xuICBjb2xvcjogI2ZmNGUzMztcbiAgZm9udC1zaXplOiAxMnB4O1xuICBsZXR0ZXItc3BhY2luZzogMC4xOXB4O1xufVxuXG4ucmVxdWlyZWQge1xuICBmb250LXNpemU6IDEycHg7XG4gIGxldHRlci1zcGFjaW5nOiAwLjE5cHg7XG4gIGNvbG9yOiAjNmM3MjgzO1xufVxuXG4udHdvLWNvbCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn0iXX0= */");
             /***/ 
         }),
         /***/ "./src/app/login/login.component.ts": 
@@ -958,11 +1013,21 @@
                     this.emailValue = '';
                     this.passwordValue = '';
                 }
-                LoginComponent.prototype.ngOnInit = function () { };
+                LoginComponent.prototype.ngOnInit = function () {
+                    if (this.authService.isAuthorized) {
+                        this.router.navigate(['courses']);
+                    }
+                };
                 LoginComponent.prototype.onLoginClick = function (loginForm) {
-                    this.authService.login();
-                    this.router.navigate(['/courses']);
-                    console.log('email value ' + this.emailValue);
+                    this.authService.login(JSON.stringify(loginForm.value));
+                    var redirectUrl = this.authService.redirectUrl;
+                    if (redirectUrl) {
+                        this.authService.redirectUrl = null;
+                        this.router.navigateByUrl(redirectUrl);
+                    }
+                    else {
+                        this.router.navigate(['courses']);
+                    }
                 };
                 return LoginComponent;
             }());
@@ -1101,6 +1166,43 @@
             ], ModalDialogService);
             /***/ 
         }),
+        /***/ "./src/app/page-not-found/page-not-found.component.scss": 
+        /*!**************************************************************!*\
+          !*** ./src/app/page-not-found/page-not-found.component.scss ***!
+          \**************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = (".not-found {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: calc(100vh - 250px);\n}\n.not-found_title {\n  font-size: 2rem;\n  color: #222;\n}\n.not-found_title span {\n  color: #30b6dd;\n  font-size: 3rem;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZS1ub3QtZm91bmQvSzpcXGFuZ3VsYXJMXFxhbmd1bGFyVGVzdC9zcmNcXGFwcFxccGFnZS1ub3QtZm91bmRcXHBhZ2Utbm90LWZvdW5kLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9wYWdlLW5vdC1mb3VuZC9wYWdlLW5vdC1mb3VuZC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQUE7RUFDQSx1QkFBQTtFQUNBLG1CQUFBO0VBQ0EsMkJBQUE7QUNDRjtBRENFO0VBQ0UsZUFBQTtFQUNBLFdBQUE7QUNDSjtBRENJO0VBQ0UsY0FBQTtFQUNBLGVBQUE7QUNDTiIsImZpbGUiOiJzcmMvYXBwL3BhZ2Utbm90LWZvdW5kL3BhZ2Utbm90LWZvdW5kLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLm5vdC1mb3VuZCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBoZWlnaHQ6IGNhbGMoMTAwdmggLSAyNTBweCk7XG5cbiAgJl90aXRsZSB7XG4gICAgZm9udC1zaXplOiAycmVtO1xuICAgIGNvbG9yOiAjMjIyO1xuXG4gICAgc3BhbiB7XG4gICAgICBjb2xvcjogIzMwYjZkZDtcbiAgICAgIGZvbnQtc2l6ZTogM3JlbTtcbiAgICB9XG4gIH1cbn1cbiIsIi5ub3QtZm91bmQge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgaGVpZ2h0OiBjYWxjKDEwMHZoIC0gMjUwcHgpO1xufVxuLm5vdC1mb3VuZF90aXRsZSB7XG4gIGZvbnQtc2l6ZTogMnJlbTtcbiAgY29sb3I6ICMyMjI7XG59XG4ubm90LWZvdW5kX3RpdGxlIHNwYW4ge1xuICBjb2xvcjogIzMwYjZkZDtcbiAgZm9udC1zaXplOiAzcmVtO1xufSJdfQ== */");
+            /***/ 
+        }),
+        /***/ "./src/app/page-not-found/page-not-found.component.ts": 
+        /*!************************************************************!*\
+          !*** ./src/app/page-not-found/page-not-found.component.ts ***!
+          \************************************************************/
+        /*! exports provided: PageNotFoundComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PageNotFoundComponent", function () { return PageNotFoundComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            var PageNotFoundComponent = /** @class */ (function () {
+                function PageNotFoundComponent() {
+                }
+                PageNotFoundComponent.prototype.ngOnInit = function () { };
+                return PageNotFoundComponent;
+            }());
+            PageNotFoundComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-page-not-found',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./page-not-found.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/page-not-found/page-not-found.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./page-not-found.component.scss */ "./src/app/page-not-found/page-not-found.component.scss")).default]
+                })
+            ], PageNotFoundComponent);
+            /***/ 
+        }),
         /***/ "./src/app/pages/course-page/course-page.component.scss": 
         /*!**************************************************************!*\
           !*** ./src/app/pages/course-page/course-page.component.scss ***!
@@ -1129,7 +1231,13 @@
                 function CoursePageComponent(authService) {
                     this.authService = authService;
                 }
-                CoursePageComponent.prototype.ngOnInit = function () { };
+                Object.defineProperty(CoursePageComponent.prototype, "userIsAuthorized", {
+                    get: function () {
+                        return this.authService.isAuthorized;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 return CoursePageComponent;
             }());
             CoursePageComponent.ctorParameters = function () { return [
@@ -1194,6 +1302,59 @@
                     styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./search.component.scss */ "./src/app/search/search.component.scss")).default]
                 })
             ], SearchComponent);
+            /***/ 
+        }),
+        /***/ "./src/app/shared/components/breadcrumbs/breadcrumbs.component.scss": 
+        /*!**************************************************************************!*\
+          !*** ./src/app/shared/components/breadcrumbs/breadcrumbs.component.scss ***!
+          \**************************************************************************/
+        /*! exports provided: default */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony default export */ __webpack_exports__["default"] = (".breadcrumbs {\n  background: #fff;\n  padding: 20px 0;\n}\n.breadcrumbs a {\n  font-family: SourceSansPro;\n  font-size: 14px;\n  font-weight: 600;\n  line-height: 1.71;\n  color: #2c2f3c;\n  text-decoration: none;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvc2hhcmVkL2NvbXBvbmVudHMvYnJlYWRjcnVtYnMvSzpcXGFuZ3VsYXJMXFxhbmd1bGFyVGVzdC9zcmNcXGFwcFxcc2hhcmVkXFxjb21wb25lbnRzXFxicmVhZGNydW1ic1xcYnJlYWRjcnVtYnMuY29tcG9uZW50LnNjc3MiLCJzcmMvYXBwL3NoYXJlZC9jb21wb25lbnRzL2JyZWFkY3J1bWJzL2JyZWFkY3J1bWJzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZ0JBQUE7RUFDQSxlQUFBO0FDQ0Y7QURDRTtFQUNFLDBCQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQUFBO0VBQ0EsaUJBQUE7RUFDQSxjQUFBO0VBQ0EscUJBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL3NoYXJlZC9jb21wb25lbnRzL2JyZWFkY3J1bWJzL2JyZWFkY3J1bWJzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJyZWFkY3J1bWJzIHtcclxuICBiYWNrZ3JvdW5kOiAjZmZmO1xyXG4gIHBhZGRpbmc6IDIwcHggMDtcclxuXHJcbiAgYSB7XHJcbiAgICBmb250LWZhbWlseTogU291cmNlU2Fuc1BybztcclxuICAgIGZvbnQtc2l6ZTogMTRweDtcclxuICAgIGZvbnQtd2VpZ2h0OiA2MDA7XHJcbiAgICBsaW5lLWhlaWdodDogMS43MTtcclxuICAgIGNvbG9yOiAjMmMyZjNjO1xyXG4gICAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xyXG4gIH1cclxufVxyXG4iLCIuYnJlYWRjcnVtYnMge1xuICBiYWNrZ3JvdW5kOiAjZmZmO1xuICBwYWRkaW5nOiAyMHB4IDA7XG59XG4uYnJlYWRjcnVtYnMgYSB7XG4gIGZvbnQtZmFtaWx5OiBTb3VyY2VTYW5zUHJvO1xuICBmb250LXNpemU6IDE0cHg7XG4gIGZvbnQtd2VpZ2h0OiA2MDA7XG4gIGxpbmUtaGVpZ2h0OiAxLjcxO1xuICBjb2xvcjogIzJjMmYzYztcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xufSJdfQ== */");
+            /***/ 
+        }),
+        /***/ "./src/app/shared/components/breadcrumbs/breadcrumbs.component.ts": 
+        /*!************************************************************************!*\
+          !*** ./src/app/shared/components/breadcrumbs/breadcrumbs.component.ts ***!
+          \************************************************************************/
+        /*! exports provided: BreadcrumbsComponent */
+        /***/ (function (module, __webpack_exports__, __webpack_require__) {
+            "use strict";
+            __webpack_require__.r(__webpack_exports__);
+            /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BreadcrumbsComponent", function () { return BreadcrumbsComponent; });
+            /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+            /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+            /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/auth.service */ "./src/app/shared/services/auth.service.ts");
+            /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+            /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+            var BreadcrumbsComponent = /** @class */ (function () {
+                function BreadcrumbsComponent(authService, router) {
+                    this.authService = authService;
+                    this.router = router;
+                    this.url = '';
+                }
+                BreadcrumbsComponent.prototype.ngOnInit = function () {
+                    var _this = this;
+                    this.url = '';
+                    this.router.events.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["filter"])(function (event) { return event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_3__["NavigationStart"]; })).subscribe(function (event) {
+                        _this.url = event.url.replace('/courses', '');
+                    });
+                };
+                return BreadcrumbsComponent;
+            }());
+            BreadcrumbsComponent.ctorParameters = function () { return [
+                { type: _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] },
+                { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
+            ]; };
+            BreadcrumbsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+                Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+                    selector: 'app-breadcrumbs',
+                    template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./breadcrumbs.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/shared/components/breadcrumbs/breadcrumbs.component.html")).default,
+                    styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./breadcrumbs.component.scss */ "./src/app/shared/components/breadcrumbs/breadcrumbs.component.scss")).default]
+                })
+            ], BreadcrumbsComponent);
             /***/ 
         }),
         /***/ "./src/app/shared/components/footer/footer.component.scss": 
@@ -1262,30 +1423,19 @@
                     this.authService = authService;
                     this.router = router;
                 }
+                Object.defineProperty(HeaderComponent.prototype, "hasUserInfo", {
+                    get: function () {
+                        return this.authService.isAuthorized;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 HeaderComponent.prototype.ngOnInit = function () {
-                    var _this = this;
-                    this.authService.login();
-                    this.sub = this.authService.getUsersInfo().subscribe(function (user) {
-                        _this.user = user;
-                    });
-                };
-                // onLoginClick() {
-                //   const el = document.getElementsByClassName('login') as HTMLCollectionOf<HTMLElement>
-                //   // const val = document.getElementsByClassName('body') as HTMLCollectionOf<HTMLElement>
-                //   if (true) {
-                //     for (var i = 0; i < el.length; i++) {
-                //       el[i].style.display = 'block'
-                //     }
-                //     console.log('onLoginClick')
-                //   }
-                // }
-                HeaderComponent.prototype.ngOnDestroy = function () {
-                    this.sub.unsubscribe();
+                    this.user = this.authService.getUsersInfo();
                 };
                 HeaderComponent.prototype.onLogoffClick = function () {
                     this.authService.logout();
                     this.router.navigate(['/login']);
-                    console.log('onLogoffClick');
                 };
                 return HeaderComponent;
             }());
@@ -1423,25 +1573,30 @@
             /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthService", function () { return AuthService; });
             /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
             /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-            /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
             var AuthService = /** @class */ (function () {
                 function AuthService() {
-                    this.isAuthenticated = true;
                     this.token = 'qwerty';
                     this.users = { id: 1, firstName: 'Ann', lastName: 'Sample' };
                 }
-                AuthService.prototype.login = function () {
-                    localStorage.setItem(this.token, JSON.stringify(this.getUsersInfo()));
-                    this.isAuthenticated = true;
-                    console.log('logged');
+                Object.defineProperty(AuthService.prototype, "isAuthorized", {
+                    get: function () {
+                        // return !!this.getUsersInfo();
+                        return !!JSON.parse(localStorage.getItem(this.token));
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                AuthService.prototype.login = function (userLogin) {
+                    localStorage.setItem(this.token, userLogin);
                 };
                 AuthService.prototype.logout = function () {
                     localStorage.removeItem(this.token);
-                    this.users = null;
-                    this.isAuthenticated = false;
                 };
                 AuthService.prototype.getUsersInfo = function () {
-                    return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])(this.users);
+                    if (this.isAuthorized) {
+                        return this.users;
+                    }
+                    return null;
                 };
                 return AuthService;
             }());
