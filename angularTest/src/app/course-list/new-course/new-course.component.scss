@@ -1,0 +1,78 @@
+.new-course {
+  margin: 5% auto;
+  z-index: 1;
+  width: 60%;
+  max-width: 730px;
+  border-radius: 8px;
+  box-shadow: 0 1px 24px 0 rgba(18, 21, 35, 0.08);
+  border: solid 1px transparent;
+  background: #fff;
+  padding: 25px;
+
+  input {
+    width: 100%;
+    height: 36px;
+    border-radius: 3px;
+    border: solid 1px #d9dbe3;
+    padding: 0 12px;
+    margin: 10px 0;
+  }
+
+  textarea {
+    width: 100%;
+    border-radius: 3px;
+    border: solid 1px #d9dbe3;
+    padding: 0 12px;
+    margin: 10px 0;
+  }
+
+  ::placeholder {
+    color: #c0c3ce;
+  }
+
+  h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #2c2f3c;
+  }
+
+  label {
+    color: #525462;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.22px;
+  }
+
+  .submit {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.validate-error {
+  color: #ff4e33;
+  font-size: 12px;
+  letter-spacing: 0.19px;
+}
+
+.required {
+  font-size: 12px;
+  letter-spacing: 0.19px;
+  color: #6c7283;
+}
+
+.two-col {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-submit {
+  background: #9bc837;
+  padding: 0 20px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 2.43;
+  letter-spacing: -0.1px;
+}

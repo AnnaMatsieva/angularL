@@ -1,0 +1,37 @@
+<form class="new-course" name="newCourse" #courseForm="ngForm">
+  <h3>New Course</h3>
+  <div class="two-col">
+    <label for="title">Title:</label>
+    <span class="required">*required</span>
+  </div>
+  <input id="title" type="text" placeholder="Text input" [(ngModel)]="courseItems.title" name="title" />
+
+  <div class="two-col">
+    <label for="description">Description:</label>
+    <span class="required">*required</span>
+  </div>
+  <textarea placeholder="Add description" [(ngModel)]="courseItems.description" name="description"> </textarea>
+
+  <div class="two-col">
+    <label for="duration">Duration:</label>
+    <span class="required">*required</span>
+  </div>
+  <input id="duration" type="time" placeholder="Minutes" [(ngModel)]="courseItems.duration" name="minutes" />
+
+  <div class="two-col">
+    <label for="date">Date:</label>
+    <span class="required">*required</span>
+  </div>
+  <input id="date" type="date" placeholder="mm-dd-yyyy" [(ngModel)]="courseItems.creationDate" name="date" />
+
+  <div class="two-col">
+    <label for="author">Author:</label>
+    <span class="required">*required</span>
+  </div>
+  <input id="author" type="text" placeholder="Start typing" name="author" />
+
+  <div class="submit">
+    <button type="submit" class="button btn-light" (click)="onCancelClick()">Cancel</button>
+    <button type="submit" class="button btn-submit" (click)="onSaveClick()">Save</button>
+  </div>
+</form>
